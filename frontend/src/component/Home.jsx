@@ -1,9 +1,13 @@
 import React from 'react'
 
+
 const Home = () => {
+
+
+  
   return (
     <div>
-            <p>Hello from home</p>
+            <p className='h-8 font-bold text-8xl'>Hello from home</p>
     </div>
   )
 }
