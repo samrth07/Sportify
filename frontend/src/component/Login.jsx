@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const Login = () => {
   });
 
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,10 +30,11 @@ const Login = () => {
       })
   
       alert(response.data.token);
+      navigate('/')
       setError('');
     }
   catch(e) {
-    alert(response.data.message);
+    alert(e);
   }
   };
 
