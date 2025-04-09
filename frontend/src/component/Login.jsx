@@ -21,9 +21,8 @@ const Login = () => {
       return;
     }
 
-    // Call login API or logic
   try{
-      const response = await axios.post('http://localhost:3000/user/signin', {
+      const response = await axios.post('http://localhost:3000/admin/signin', {
         email: e.target.email.value,
         password: e.target.password.value
       })
@@ -32,7 +31,7 @@ const Login = () => {
       setError('');
     }
   catch(e) {
-    alert('Error signing in')
+    alert(response.data.message);
   }
   };
 

@@ -28,7 +28,7 @@ const Signup = () => {
       return;
     }
     try{
-      const response = await axios.post('http://localhost:3000/user/signup', {
+      const response = await axios.post('http://localhost:3000/admin/signup', {
         email: e.target.email.value,
         userName: e.target.name.value,
         password: e.target.password.value
@@ -38,7 +38,7 @@ const Signup = () => {
       setError('');
   }
     catch(e) {
-      alert('Error signing up')
+      alert(response.data.message);
     }
   };
 
