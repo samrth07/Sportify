@@ -5,7 +5,13 @@ const footballRouter = express.Router();
 const carromRouter = express.Router();
 const kabaddiRouter = express.Router();
 const basketballRouter = express.Router();
-const { CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel} = require("../db");
+const { CricketModel, 
+    FootballModel, 
+    BasketballModel, 
+    CarromModel, 
+    KabaddiModel, 
+    BadmintonModel
+    } = require("../db");
 
 cricketRouter.get('/live', async (req, res) => {
     try {
