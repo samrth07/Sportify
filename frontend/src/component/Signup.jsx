@@ -30,7 +30,7 @@ const Signup = () => {
     try{
       const response = await axios.post('http://localhost:3000/admin/signup', {
         email: e.target.email.value,
-        userName: e.target.name.value,
+        adminName: e.target.name.value,
         password: e.target.password.value
       })
   
