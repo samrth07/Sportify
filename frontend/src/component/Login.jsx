@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +13,7 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
@@ -21,9 +22,18 @@ const Login = () => {
     }
 
     // Call login API or logic
-    console.log('Login data:', formData);
-    alert('Login successful!');
-    setError('');
+  try{
+      const response = await axios.post('http://localhost:3000/user/signin', {
+        email: e.target.email.value,
+        password: e.target.password.value
+      })
+  
+      alert(response.data.token);
+      setError('');
+    }
+  catch(e) {
+    alert('Error signing in')
+  }
   };
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +15,7 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
@@ -26,11 +27,19 @@ const Signup = () => {
       setError('Passwords do not match.');
       return;
     }
-
-    // Call your API or handle signup logic here
-    console.log('Signup data:', formData);
-    alert('Signup successful!');
-    setError('');
+    try{
+      const response = await axios.post('http://localhost:3000/user/signup', {
+        email: e.target.email.value,
+        userName: e.target.name.value,
+        password: e.target.password.value
+      })
+  
+      alert(response.data.message);
+      setError('');
+  }
+    catch(e) {
+      alert('Error signing up')
+    }
   };
 
   return (
