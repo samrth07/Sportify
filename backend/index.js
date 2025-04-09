@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const  userRouter  = require("./routes/user");
 const  adminRouter = require("./routes/admin");
 const cors = require("cors");
 require("dotenv").config();
@@ -9,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 
 async function main() {

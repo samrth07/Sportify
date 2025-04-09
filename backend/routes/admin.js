@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { adminAuth } = require("../middleware");
 const adminRouter =  Router();
-const {AdminModel} = require("../db");
+const {AdminModel, CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel} = require("../db");
 const { z } = require("zod");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -18,8 +18,7 @@ adminRouter.post("/signup", async(req, res) => {
 
     if(!response.success) {
         res.status(401).json ({
-            message: "Invalid format",
-            error: response.error.message
+            message: "Password must be more than 7 characters",
         })
         return;
     }
@@ -65,5 +64,156 @@ adminRouter.post("/signin", async(req, res) => {
     }
 });
 
+adminRouter.use(adminAuth);
+
+adminRouter.post('/cricket', async(req, res) => {
+
+    const team1 = req.body.teamA;
+    const team2 = req.body.teamB;
+    const date = req.body.date;
+    const startTime = req.body.startTime;
+
+    const trying = CricketModel.create({
+        teamA: team1,
+        teamB: team2,
+        date: date,
+        startTime: startTime
+    })
+
+    if(!trying) {
+        res.status(403).json ({
+            message: "Error adding match"
+        })
+    }
+
+    res.json({
+        message: "Match added sucessfully"
+    })
+});
+
+adminRouter.post('/football', async(req, res) => {
+
+    const team1 = req.body.teamA;
+    const team2 = req.body.teamB;
+    const date = req.body.date;
+    const startTime = req.body.startTime;
+
+    const adding = FootballModel.create({
+        teamA: team1,
+        teamB: team2,
+        date: date,
+        startTime: startTime
+    })
+
+    if(!adding) {
+        res.status(403).json ({
+            message: "Error adding match"
+        })
+    }
+
+    res.json({
+        message: "Match added sucessfully"
+    })
+});
+
+adminRouter.post('/badminton', async(req, res) => {
+
+    const player1 = req.body.playerA;
+    const player2 = req.body.playerB;
+    const date = req.body.date;
+    const startTime = req.body.startTime;
+
+    const adding = BadmintonModel.create({
+        playerA: player1,
+        playerB: player2,
+        date: date,
+        startTime: startTime
+    })
+
+    if(!adding) {
+        res.status(403).json ({
+            message: "Error adding match"
+        })
+    }
+
+    res.json({
+        message: "Match added sucessfully"
+    })
+});
+
+adminRouter.post('/carrom', async(req, res) => {
+
+    const player1 = req.body.playerA;
+    const player2 = req.body.playerB;
+    const date = req.body.date;
+    const startTime = req.body.startTime;
+
+    const adding = CarromModel.create({
+        playerA: player1,
+        playerB: player2,
+        date: date,
+        startTime: startTime
+    })
+
+    if(!adding) {
+        res.status(403).json ({
+            message: "Error adding match"
+        })
+    }
+
+    res.json({
+        message: "Match added sucessfully"
+    })
+});
+
+adminRouter.post('/basketball', async(req, res) => {
+
+    const team1 = req.body.teamA;
+    const team2 = req.body.teamB;
+    const date = req.body.date;
+    const startTime = req.body.startTime;
+
+    const adding = BasketballModel.create({
+        teamA: team1,
+        teamB: team2,
+        date: date,
+        startTime: startTime
+    })
+
+    if(!adding) {
+        res.status(403).json ({
+            message: "Error adding match"
+        })
+    }
+
+    res.json({
+        message: "Match added sucessfully"
+    })
+});
+
+adminRouter.post('/kabaddi', async(req, res) => {
+
+    const team1 = req.body.teamA;
+    const team2 = req.body.teamB;
+    const date = req.body.date;
+    const startTime = req.body.startTime;
+
+    const adding = KabaddiModel.create({
+        teamA: team1,
+        teamB: team2,
+        date: date,
+        startTime: startTime
+    })
+
+    if(!adding) {
+        res.status(403).json ({
+            message: "Error adding match"
+        })
+    }
+
+    res.json({
+        message: "Match added sucessfully"
+    })
+});
+
 module.exports = adminRouter;
-//adminRouter.use(adminAuth);
