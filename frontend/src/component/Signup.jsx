@@ -38,7 +38,7 @@ const Signup = () => {
       setError('');
   }
     catch(e) {
-      alert(response.data.message);
+      alert(e.data.message);
     }
   };
 
