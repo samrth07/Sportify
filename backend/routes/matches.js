@@ -9,17 +9,14 @@ const { CricketModel,
     BadmintonModel
     } = require("../db");
 
+  sportRouter.get('/cricket', async (req, res) => {
+    try {
+      const matches = await CricketModel.find({});
+      res.json(matches);
+    } catch (error) {
+      res.status(500).json({ 
+        error: 'Error fetching matches' 
 
-
-    sportRouter.get('/Cricket', async (req, res) => {
-      try {
-        const matches = await CricketModel.find({});
-        res.json(matches);
-      } catch (error) {
-        res.status(500).json({ 
-          error: 'Error fetching matches' 
-      });
-      }
     });
   
 
