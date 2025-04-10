@@ -1,10 +1,11 @@
 import React from 'react'
-import Spcard from '../Sports/Spcard'
+import Sportpage from '../Sports/Sportpage'
+
 
 const Contact = () => {
   return (
     <div>
-            <Spcard />
+            <Sportpage />
     </div>
   )
 }

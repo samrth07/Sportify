@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect, forwardRef, createContext, useContext } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+import {motion, AnimatePresence } from "framer-motion"
+import { Link } from "react-router-dom"
+
 
 // Custom Icon Components
 const ChevronRight = ({ className = "h-4 w-4" }) => (
@@ -672,123 +673,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
-              <Trophy className="h-8 w-8 text-green-500 mr-2" />
-              <span className="text-2xl font-bold text-green-500">Sportyfy</span>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex space-x-8">
-              <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors relative group">
-                Home
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all group-hover:w-full"></span>
-              </a>
-              <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors relative group">
-                About
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all group-hover:w-full"></span>
-              </a>
-              <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors relative group">
-                Sport
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all group-hover:w-full"></span>
-              </a>
-              <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors relative group">
-                News
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all group-hover:w-full"></span>
-              </a>
-            </nav>
-
-            {/* Login Buttons */}
-            <div className="hidden md:flex space-x-4">
-              <Button
-                size="sm"
-                className="bg-green-500 hover:bg-green-600 text-white shadow-md transition-all hover:shadow-lg"
-                onClick={() => {
-                  setLoginType("student")
-                  setIsLoginOpen(true)
-                }}
-              >
-                Student
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-green-500 text-green-500 hover:bg-green-50 shadow-sm transition-all hover:shadow-md"
-                onClick={() => {
-                  setLoginType("admin")
-                  setIsLoginOpen(true)
-                }}
-              >
-                Admin
-              </Button>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-md hover:bg-green-50 transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6 text-green-800" /> : <Menu className="h-6 w-6 text-green-800" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-green-100 py-4"
-          >
-            <div className="container mx-auto px-4">
-              <nav className="flex flex-col space-y-4">
-                <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors">
-                  Home
-                </a>
-                <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors">
-                  About
-                </a>
-                <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors">
-                  Sport
-                </a>
-                <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors">
-                  News
-                </a>
-                <div className="flex space-x-4 pt-2">
-                  <Button
-                    size="sm"
-                    className="bg-green-500 hover:bg-green-600 text-white"
-                    onClick={() => {
-                      setLoginType("student")
-                      setIsLoginOpen(true)
-                      setMobileMenuOpen(false)
-                    }}
-                  >
-                    Student Login
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="border-green-500 text-green-500 hover:bg-green-50"
-                    onClick={() => {
-                      setLoginType("admin")
-                      setIsLoginOpen(true)
-                      setMobileMenuOpen(false)
-                    }}
-                  >
-                    Admin Login
-                  </Button>
-                </div>
-              </nav>
-            </div>
-          </motion.div>
-        )}
-      </header>
+   
 
       {/* Hero Section with Image Slider */}
       <section className="relative">
@@ -804,7 +689,7 @@ export default function Home() {
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
               >
-                <Image
+                <img
                   src={heroSlides[currentSlide].src || "/placeholder.svg"}
                   alt={heroSlides[currentSlide].alt}
                   fill
@@ -930,7 +815,7 @@ export default function Home() {
               className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 group"
             >
               <div className="h-48 relative overflow-hidden">
-                <Image
+                <img
                   src="https://images.unsplash.com/photo-1459865264687-595d652de67e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                   alt="Live scores feature"
                   fill
@@ -955,7 +840,7 @@ export default function Home() {
               className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 group"
             >
               <div className="h-48 relative overflow-hidden">
-                <Image
+                <img
                   src="https://images.unsplash.com/photo-1560272564-c83b66b1ad12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1149&q=80"
                   alt="Match history feature"
                   fill
@@ -980,7 +865,7 @@ export default function Home() {
               className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 group"
             >
               <div className="h-48 relative overflow-hidden">
-                <Image
+                <img
                   src="https://images.unsplash.com/photo-1511886929837-354d827aae26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
                   alt="Sports news feature"
                   fill
@@ -1075,7 +960,7 @@ export default function Home() {
                 className={`overflow-hidden rounded-lg ${index === 0 ? "sm:col-span-2 sm:row-span-2" : ""}`}
               >
                 <div className={`relative ${index === 0 ? "h-96" : "h-64"} w-full overflow-hidden group`}>
-                  <Image
+                  <img
                     src={image.src || "/placeholder.svg"}
                     alt={image.alt}
                     fill
@@ -1121,7 +1006,7 @@ export default function Home() {
                 className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 group"
               >
                 <div className="h-48 relative overflow-hidden">
-                  <Image
+                  <img
                     src={tip.image || "/placeholder.svg"}
                     alt={tip.title}
                     fill
@@ -1177,7 +1062,7 @@ export default function Home() {
                 <p className="text-green-800 mb-6 text-center italic">"{testimonial.quote}"</p>
                 <div className="flex items-center justify-center flex-col text-center">
                   <div className="w-16 h-16 rounded-full overflow-hidden mb-3 border-2 border-green-500">
-                    <Image
+                    <img
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={testimonial.name}
                       width={64}

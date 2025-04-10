@@ -2,7 +2,7 @@
 import { useState } from "react"
 import { Calendar, Clock, MapPin, Trophy, Users, Star, TrendingUp, BarChart2 } from "lucide-react"
 
-const Cricket = () => {
+const Samarth = () => {
   const [activeTab, setActiveTab] = useState("live")
   const [showScoreForm, setShowScoreForm] = useState(false)
 
@@ -569,9 +569,7 @@ const Cricket = () => {
       <style jsx>{`
         /* Global Styles */
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+         
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
@@ -1171,4 +1169,4 @@ const Cricket = () => {
   )
 }
 
-export default Cricket
+export default Samarth
