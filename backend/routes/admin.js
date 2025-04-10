@@ -27,12 +27,12 @@ adminRouter.post("/signup", async(req, res) => {
     const password = req.body.password;
     const hashedPassword = await bcrypt.hash(password, 5);
 
-    await AdminModel.create ({
+   const resp =  await AdminModel.create ({
         email: email,
         adminName: adminName,
         password: hashedPassword,
     })
-
+    console.log(resp)
     res.json ({
         message: "Signup succeded"
     })
@@ -64,7 +64,7 @@ adminRouter.post("/signin", async(req, res) => {
     }
 });
 
-adminRouter.use(adminAuth);
+//adminRouter.use(adminAuth);
 
 adminRouter.post('/cricket', async(req, res) => {
 
@@ -73,7 +73,7 @@ adminRouter.post('/cricket', async(req, res) => {
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const trying = CricketModel.create({
+    const trying = await CricketModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
@@ -98,7 +98,7 @@ adminRouter.post('/football', async(req, res) => {
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const adding = FootballModel.create({
+    const adding = await FootballModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
@@ -118,14 +118,14 @@ adminRouter.post('/football', async(req, res) => {
 
 adminRouter.post('/badminton', async(req, res) => {
 
-    const player1 = req.body.playerA;
-    const player2 = req.body.playerB;
+    const teamA = req.body.teamA;
+    const teamB = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const adding = BadmintonModel.create({
-        playerA: player1,
-        playerB: player2,
+    const adding = await BadmintonModel.create({
+        teamA: teamA,
+        teamB: teamB,
         date: date,
         startTime: startTime
     })
@@ -143,14 +143,14 @@ adminRouter.post('/badminton', async(req, res) => {
 
 adminRouter.post('/carrom', async(req, res) => {
 
-    const player1 = req.body.playerA;
-    const player2 = req.body.playerB;
+    const player1 = req.body.teamA;
+    const player2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const adding = CarromModel.create({
-        playerA: player1,
-        playerB: player2,
+    const adding = await CarromModel.create({
+        teamA: player1,
+        teamB: player2,
         date: date,
         startTime: startTime
     })
@@ -173,7 +173,7 @@ adminRouter.post('/basketball', async(req, res) => {
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const adding = BasketballModel.create({
+    const adding = await BasketballModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
@@ -198,7 +198,7 @@ adminRouter.post('/kabaddi', async(req, res) => {
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const adding = KabaddiModel.create({
+    const adding = await KabaddiModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
@@ -215,5 +215,5 @@ adminRouter.post('/kabaddi', async(req, res) => {
         message: "Match added sucessfully"
     })
 });
-
+  
 module.exports = adminRouter;

@@ -11,11 +11,8 @@ const { CricketModel,
 
   sportRouter.get('/cricket', async (req, res) => {
     try {
-      const matches = await CricketModel.find({
-        status: 'live'
-      }).sort({ 
-        startTime: -1
-     }); // recent live 
+      const matches = await CricketModel.find({})
+
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -29,7 +26,7 @@ const { CricketModel,
 
   sportRouter.get('/football', async (req, res) => {
     try {
-      const matches = await FootballModel.find();
+      const matches = await FootballModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -42,7 +39,7 @@ const { CricketModel,
 
   sportRouter.get('/basketball', async (req, res) => {
     try {
-      const matches = await BasketballModel.find();
+      const matches = await BasketballModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -55,7 +52,7 @@ const { CricketModel,
 
   sportRouter.get('/kabaddi', async (req, res) => {
     try {
-      const matches = await KabaddiModel.find();
+      const matches = await KabaddiModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -68,7 +65,7 @@ const { CricketModel,
 
   sportRouter.get('/carrom', async (req, res) => {
     try {
-      const matches = await CarromModel.find();
+      const matches = await CarromModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -81,7 +78,7 @@ const { CricketModel,
 
     sportRouter.get('/badminton', async (req, res) => {
       try {
-        const matches = await BadmintonModel.find();
+        const matches = await BadmintonModel.find({});
         res.json(matches);
       } catch (error) {
         res.status(500).json({ 
