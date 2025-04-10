@@ -11,7 +11,11 @@ const { CricketModel,
 
   sportRouter.get('/cricket', async (req, res) => {
     try {
-      const matches = await CricketModel.find();
+      const matches = await CricketModel.find({
+        status: 'live'
+      }).sort({ 
+        startTime: -1
+     }); // recent live 
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 

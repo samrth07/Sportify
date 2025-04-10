@@ -13,7 +13,7 @@ const Matches = () => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/matches?sport=${sport}`);
+        const res = await axios.get(`http://localhost:3000/matches/${sport}`);
         setMatches(res.data); // should include status field
       } catch (err) {
         console.error(err);

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,9 @@ const Signup = () => {
     password: '',
     confirmPassword: '',
   });
+
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [error, setError] = useState('');
 
@@ -35,10 +40,12 @@ const Signup = () => {
       })
   
       alert(response.data.message);
+      navigate('/')
+      login();
       setError('');
   }
     catch(e) {
-      alert(response.data.message);
+      alert(e.data.message);
     }
   };
 

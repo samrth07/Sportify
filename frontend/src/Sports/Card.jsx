@@ -10,7 +10,7 @@ const Card = ({ matches }) => {
   return (
     <div>
       <div className="flex justify-center text-xl font-semibold gap-6 mb-6">
-        {['Live', 'Upcoming', 'Recent'].map((tab) => (
+        {['Live', 'Upcoming', 'completed'].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -23,6 +23,7 @@ const Card = ({ matches }) => {
             {tab}
           </button>
         ))}
+        
       </div>
 
       <div className="grid gap-4 max-w-3xl mx-auto">
@@ -34,6 +35,7 @@ const Card = ({ matches }) => {
               <h4 className="text-lg font-bold">{match.teamA} vs {match.teamB}</h4>
               <p className="text-sm text-gray-600">{match.time}</p>
               <p className="text-sm text-gray-500 capitalize">Status: {match.status}</p>
+              { match.status === 'Live'}
             </div>
           ))
         )}
