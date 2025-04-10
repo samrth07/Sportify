@@ -1,7 +1,8 @@
 import React from 'react'
 import CreateMatch from '../Sports/createMatch';
 
-const Home = () => {
+
+const HomeOld = () => {
   return (
     <div>
                 <p>Hello from home</p>
@@ -11,4 +12,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomeOld
