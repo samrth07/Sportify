@@ -87,6 +87,6 @@ const { CricketModel,
       });
       }
     });
-  
-  module.exports = {sportRouter};
+    
+  module.exports = sportRouter;
 

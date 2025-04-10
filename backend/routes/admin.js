@@ -64,16 +64,16 @@ adminRouter.post("/signin", async(req, res) => {
     }
 });
 
-adminRouter.use(adminAuth);
+// adminRouter.use(adminAuth);
 
-adminRouter.post('/cricket', async(req, res) => {
+adminRouter.post('/cricket', async (req, res) => {
 
     const team1 = req.body.teamA;
     const team2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-    const trying = CricketModel.create({
+    const trying =  CricketModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
