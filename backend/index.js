@@ -1,13 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const  adminRouter = require("./routes/admin");
-const {cricketRouter,
-    footballRouter,
-    badmintonRouter,
-    basketballRouter,
-    carromRouter,
-    kabaddiRouter
-    } = require("./routes/matches");
+const {sportRouter} = require("./routes/matches");
 
 const cors = require("cors");
 require("dotenv").config();
@@ -17,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/admin", adminRouter);
-app.use("/matches", cricketRouter);
+app.use("/cricket", cricketRouter);
 app.use("/football", footballRouter);
 app.use("/basketball", basketballRouter);
 app.use("/kabaddi", kabaddiRouter);
