@@ -9,7 +9,7 @@ const { CricketModel,
     BadmintonModel
     } = require("../db");
 
-  sportRouter.get('/Cricket', async (req, res) => {
+  sportRouter.get('/cricket', async (req, res) => {
     try {
       const matches = await CricketModel.find();
       res.json(matches);
@@ -86,5 +86,5 @@ const { CricketModel,
       }
     });
   
-  module.exports = {sportRouter};
+  module.exports = sportRouter;
 
