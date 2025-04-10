@@ -18,7 +18,8 @@ const { CricketModel,
         error: 'Error fetching matches' 
 
     });
-  
+  }
+});
 
   //FOOTBALL 
 
@@ -85,5 +86,5 @@ const { CricketModel,
       }
     });
   
-  module.exports = {sportRouter};
+  module.exports = sportRouter;
 

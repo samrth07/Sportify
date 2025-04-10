@@ -1,7 +1,6 @@
 import React from 'react'
 import CreateMatch from '../Sports/createMatch';
 
-
 const Home = () => {
   return (
     <div>
