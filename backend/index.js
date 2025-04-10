@@ -11,7 +11,12 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/admin", adminRouter);
-app.use("/matches", sportRouter);
+app.use("/cricket", cricketRouter);
+app.use("/football", footballRouter);
+app.use("/basketball", basketballRouter);
+app.use("/kabaddi", kabaddiRouter);
+app.use("/carrom", carromRouter);
+app.use("/badminton", badmintonRouter);
 
 
 async function main() {

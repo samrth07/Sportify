@@ -9,9 +9,13 @@ const { CricketModel,
     BadmintonModel
     } = require("../db");
 
-  sportRouter.get('/Cricket', async (req, res) => {
+cricketRouter.get('/live', async (req, res) => {
     try {
-      const matches = await CricketModel.find();
+      const matches = await CricketModel.find({
+        status: 'live'
+      }).sort({ 
+        startTime: -1
+     }); // recent live 
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
