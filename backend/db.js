@@ -7,6 +7,13 @@ let adminModel = new Schema ({
     password: String,
 });
 
+let communityModel = new Schema ({
+    email: {type: String, unique: true},
+    userName: String,
+    password: String,
+});
+
+
 let cricketModel = new Schema ({
     teamA: String,
     teamB: String,
@@ -76,6 +83,7 @@ let basketballModel = new Schema ({
 })
 
 let AdminModel = mongoose.model("admin", adminModel);
+let CommunityModel = mongoose.model('community', communityModel);
 let CricketModel = mongoose.model("cricket", cricketModel);
 let FootballModel = mongoose.model("football", footballModel);
 let KabaddiModel = mongoose.model("kabaddi", kabaddiModel);
@@ -84,6 +92,7 @@ let BadmintonModel = mongoose.model("badminton", badmintonModel);
 let BasketballModel = mongoose.model("basketball", basketballModel);
 
 module.exports = {
+    CommunityModel: CommunityModel,
     AdminModel: AdminModel,
     CricketModel: CricketModel,
     FootballModel: FootballModel,
