@@ -34,13 +34,25 @@ const Card = ({ matches }) => {
             <div key={match.id} className="bg-white p-4 rounded shadow-md">
               <h4 className="text-lg font-bold">{match.teamA} vs {match.teamB}</h4>
               <p className="text-sm text-gray-600">{match.time}</p>
-              <p className="text-sm text-gray-500 capitalize">Status: {match.status}</p>
-              { match.status === 'Live'}
+              {/* <p className="text-sm text-gray-500 capitalize">Status: {match.status}</p> */}
+              <p className="text-sm text-gray-500 capitalize">{match.teamA}: {match.teamAGoals}</p>
+              <p className="text-sm text-gray-500 capitalize">{match.teamB}: {match.teamBGoals}</p>
+              <p className="text-sm text-gray-500 capitalize">Date: {match.date}</p>
+              <p className="text-sm text-gray-500 capitalize">Date: {match.startTime}</p>
             </div>
           ))
         )}
       </div>
     </div>
+
+// teamA: String,
+// teamB: String,
+// winningTeam: {type: String, default:null},
+// teamAGoals: {type: Number, default:0},
+// teamBGoals: {type: Number, default:0},
+// date: Date,
+// startTime: Date,
+// status: { type: String, enum: ['upcoming', 'live', 'completed'], default: 'upcoming' },
   );
 };
 

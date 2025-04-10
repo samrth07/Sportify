@@ -5,9 +5,10 @@ import Home from './component/Home'
 import Navbar from './component/Navbar';
 import Signup from './component/Signup';
 import Login from './component/Login';
-import Sport from './component/Sport';
+import Sportpage from './Sports/Sportpage';
 import About from './component/About';
 import Matches from './Sports/Matches';
+import Cricket from './Sports/Cricket';
 
 function App() {
   
@@ -19,9 +20,10 @@ function App() {
             <Route path='/' element={<Home/>}/>
             <Route path='/signup' element={<Signup/>}/>
             <Route path='/login' element={<Login/>}/>
-            <Route path='/sport' element={<Sport/>}/>
+            <Route path='/sport' element={<Sportpage/>}/>
             <Route path='/about' element={<About/>}/>
-            <Route path='/matches' element={<Matches/>}/>
+            <Route path='/matches' element={<Matches/>}/> 
+            <Route path='/cricket' element={<Cricket/>}/>
        </Routes>
      
     </>

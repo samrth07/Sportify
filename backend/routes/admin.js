@@ -123,6 +123,7 @@ adminRouter.post('/badminton', async(req, res) => {
     const date = req.body.date;
     const startTime = req.body.startTime;
 
+
     const adding = await BadmintonModel.create({
         teamA: teamA,
         teamB: teamB,
@@ -151,6 +152,7 @@ adminRouter.post('/carrom', async(req, res) => {
     const adding = await CarromModel.create({
         teamA: player1,
         teamB: player2,
+
         date: date,
         startTime: startTime
     })

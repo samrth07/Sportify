@@ -11,15 +11,13 @@ const { CricketModel,
 
   sportRouter.get('/cricket', async (req, res) => {
     try {
-      const matches = await CricketModel.find({})
-
+      const matches = await CricketModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
         error: 'Error fetching matches' 
+
     });
-    }
-  });
   
 
   //FOOTBALL 
@@ -87,5 +85,5 @@ const { CricketModel,
       }
     });
   
-  module.exports = sportRouter;
+  module.exports = {sportRouter};
 
