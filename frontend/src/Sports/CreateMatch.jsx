@@ -28,7 +28,7 @@ const CreateMatch = () => {
       date: matchDate.toISOString(), // ensures JSON Date format
       startTime: startTime.toISOString() 
     };
-
+    console.log(body)
     try {
       const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
       console.log(res)
