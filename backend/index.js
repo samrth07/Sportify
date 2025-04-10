@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/admin", adminRouter);
-app.use("/cricket", cricketRouter);
+app.use("/matches", cricketRouter);
 app.use("/football", footballRouter);
 app.use("/basketball", basketballRouter);
 app.use("/kabaddi", kabaddiRouter);
