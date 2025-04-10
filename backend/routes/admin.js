@@ -87,7 +87,8 @@ adminRouter.post('/cricket', async(req, res) => {
     }
 
     res.json({
-        message: "Match added sucessfully"
+        message: "Match added sucessfully",
+        matchId: trying._id
     })
 });
 
@@ -112,7 +113,8 @@ adminRouter.post('/football', async(req, res) => {
     }
 
     res.json({
-        message: "Match added sucessfully"
+        message: "Match added sucessfully",
+        matchId: adding._id
     })
 });
 
@@ -138,7 +140,8 @@ adminRouter.post('/badminton', async(req, res) => {
     }
 
     res.json({
-        message: "Match added sucessfully"
+        message: "Match added sucessfully",
+        matchId: adding._id
     })
 });
 
@@ -164,7 +167,8 @@ adminRouter.post('/carrom', async(req, res) => {
     }
 
     res.json({
-        message: "Match added sucessfully"
+        message: "Match added sucessfully",
+        matchId: adding._id
     })
 });
 
@@ -189,7 +193,8 @@ adminRouter.post('/basketball', async(req, res) => {
     }
 
     res.json({
-        message: "Match added sucessfully"
+        message: "Match added sucessfully",
+        matchId: adding._id
     })
 });
 
@@ -214,7 +219,8 @@ adminRouter.post('/kabaddi', async(req, res) => {
     }
 
     res.json({
-        message: "Match added sucessfully"
+        message: "Match added sucessfully",
+        matchId: adding._id
     })
 });
   
