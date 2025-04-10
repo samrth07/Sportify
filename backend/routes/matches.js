@@ -9,27 +9,25 @@ const { CricketModel,
     BadmintonModel
     } = require("../db");
 
-  sportRouter.get('/cricket', async (req, res) => {
-    try {
-      const matches = await CricketModel.find({
-        status: 'live'
-      }).sort({ 
-        startTime: -1
-     }); // recent live 
-      res.json(matches);
-    } catch (error) {
-      res.status(500).json({ 
-        error: 'Error fetching matches' 
+
+
+    sportRouter.get('/Cricket', async (req, res) => {
+      try {
+        const matches = await CricketModel.find({});
+        res.json(matches);
+      } catch (error) {
+        res.status(500).json({ 
+          error: 'Error fetching matches' 
+      });
+      }
     });
-    }
-  });
   
 
   //FOOTBALL 
 
   sportRouter.get('/football', async (req, res) => {
     try {
-      const matches = await FootballModel.find();
+      const matches = await FootballModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -42,7 +40,7 @@ const { CricketModel,
 
   sportRouter.get('/basketball', async (req, res) => {
     try {
-      const matches = await BasketballModel.find();
+      const matches = await BasketballModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -55,7 +53,7 @@ const { CricketModel,
 
   sportRouter.get('/kabaddi', async (req, res) => {
     try {
-      const matches = await KabaddiModel.find();
+      const matches = await KabaddiModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -68,7 +66,7 @@ const { CricketModel,
 
   sportRouter.get('/carrom', async (req, res) => {
     try {
-      const matches = await CarromModel.find();
+      const matches = await CarromModel.find({});
       res.json(matches);
     } catch (error) {
       res.status(500).json({ 
@@ -81,7 +79,7 @@ const { CricketModel,
 
     sportRouter.get('/badminton', async (req, res) => {
       try {
-        const matches = await BadmintonModel.find();
+        const matches = await BadmintonModel.find({});
         res.json(matches);
       } catch (error) {
         res.status(500).json({ 
@@ -90,5 +88,5 @@ const { CricketModel,
       }
     });
   
-  module.exports = sportRouter;
+  module.exports = {sportRouter};
 
