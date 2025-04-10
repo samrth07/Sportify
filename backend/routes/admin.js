@@ -118,14 +118,17 @@ adminRouter.post('/football', async(req, res) => {
 
 adminRouter.post('/badminton', async(req, res) => {
 
-    const player1 = req.body.playerA;
-    const player2 = req.body.playerB;
+    const teamA = req.body.teamA;
+    const teamB = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
 
+    // teamA: String,
+    // teamB: String,
+
     const adding = BadmintonModel.create({
-        playerA: player1,
-        playerB: player2,
+        teamA: teamA,
+        teamB: teamB,
         date: date,
         startTime: startTime
     })
@@ -143,14 +146,14 @@ adminRouter.post('/badminton', async(req, res) => {
 
 adminRouter.post('/carrom', async(req, res) => {
 
-    const player1 = req.body.playerA;
-    const player2 = req.body.playerB;
+    const teamA = req.body.teamA;
+    const teamB = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
 
     const adding = CarromModel.create({
-        playerA: player1,
-        playerB: player2,
+        teamA: teamA,
+        teamB: teamB,
         date: date,
         startTime: startTime
     })
