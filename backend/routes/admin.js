@@ -64,11 +64,7 @@ adminRouter.post("/signin", async(req, res) => {
     }
 });
 
-<<<<<<<<< Temporary merge branch 1
-//adminRouter.use(adminAuth);
-=========
-// adminRouter.use(adminAuth);
->>>>>>>>> Temporary merge branch 2
+adminRouter.use(adminAuth);
 
 adminRouter.post('/cricket', async (req, res) => {
 
@@ -77,11 +73,7 @@ adminRouter.post('/cricket', async (req, res) => {
     const date = req.body.date;
     const startTime = req.body.startTime;
 
-<<<<<<<<< Temporary merge branch 1
     const trying = await CricketModel.create({
-=========
-    const trying =  CricketModel.create({
->>>>>>>>> Temporary merge branch 2
         teamA: team1,
         teamB: team2,
         date: date,

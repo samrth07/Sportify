@@ -19,18 +19,9 @@ app.use(express.json());
 
 app.use("/admin", adminRouter);
 app.use("/matches", sportRouter);
-<<<<<<< HEAD
 app.use('/creator', creatorRouter);
 app.use('/user', userRouter);
 
-=======
-
-app.use('/creator', creatorRouter);
-
-app.use('/user', userRouter);
-
-
->>>>>>> 71f2381bdb7d98087174ea66a7ee8f92351ca43c
 
 async function main() {
     await mongoose.connect(process.env.MONGO_URL);
