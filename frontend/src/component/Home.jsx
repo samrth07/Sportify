@@ -1,13 +1,17 @@
 import React from 'react'
 import LiveScore from '../Sports/LiveComponent';
+import CreateMatch from '../Sports/createMatch';
 
-const Home = () => {
+
+const HomeOld = () => {
   return (
     <div>
                 <p>Hello from home</p>
                 <LiveScore/>
+                <CreateMatch/>
+                
     </div>
   )
 }
 
-export default Home
+export default HomeOld
