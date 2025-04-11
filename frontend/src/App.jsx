@@ -34,7 +34,7 @@ function App() {
             {/* <Route path='/about' element={<About/>}/> */}
             <Route path='/matches' element={<Matches/>}/> 
             <Route path='/cricket' element={<Cricket/>}/>
-            <Route path='/cricket' element={<Cricket/>}/>
+            
             {/* <Route path='/samarth' element={<Samarth/>}/> */}
             <Route path='/creatematches' element={<CreateMatch/>}/>
             <Route path='/uploadscore' element={<Allsports/>}/>

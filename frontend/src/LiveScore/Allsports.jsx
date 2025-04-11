@@ -6,6 +6,8 @@ import axios from "axios"
 import HostMatchForm from "./Hostmatch"
 import UpdateScoreForm from "./UpdateScoreform"
 import LiveMatchCard from "./LiveMatchCard"
+import CreateMatch from "../Sports/createMatch"
+import UpdateLive from "../component/updateLive"
 
 export default function SportsManagementPage() {
   const [matches, setMatches] = useState([])
@@ -104,53 +106,39 @@ export default function SportsManagementPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-2">
+          <div className="grid grid-cols-12 lg:grid-cols-5 gap-8">
+             <div className="lg:col-span-2"> 
               {activeTab === "host-match" && (
                 <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
                   <div className="bg-green-500 py-4 px-6">
                     <h2 className="text-xl font-bold text-white">Host a New Match</h2>
                   </div>
                   <div className="p-6">
-                    <HostMatchForm
-                      onSuccess={handleCreateMatch}
-                      onSportChange={handleSportChange}
-                      selectedSport={selectedSport}
-                    />
-
-                    {createdMatchId && selectedSport && (
-                      <div className="mt-6 pt-6 border-t border-green-100">
-                        <h3 className="text-lg font-semibold text-green-800 mb-4">Live Match Control</h3>
-                        <LiveMatchCard matchId={createdMatchId} sport={selectedSport} />
-                      </div>
-                    )}
+                    <CreateMatch/>
                   </div>
                 </div>
               )}
 
-              {activeTab === "update-score" && (
+              {activeTab === "update-score" &&  (
                 <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
                   <div className="bg-green-500 py-4 px-6">
                     <h2 className="text-xl font-bold text-white">Update Match Score</h2>
                   </div>
-                  <div className="p-6">
+                  {/* <div className="p-6">
                     <UpdateScoreForm
                       matches={liveMatches}
                       selectedSport={selectedSport}
                       onSportChange={handleSportChange}
                     />
-                  </div>
+                  </div> */}
+                  <UpdateLive/>
                 </div>
-              )}
+              )
+              }
             </div>
 
-            <div className="lg:col-span-3">
-              <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
-                <div className="bg-green-500 py-4 px-6">
-                  <h2 className="text-xl font-bold text-white">
-                    {activeTab === "host-match" ? "All Matches" : "Live Matches"}
-                  </h2>
-                </div>
+            <div className="center">
+              <div>
                 <div className="p-0">
                   <div className="max-h-[600px] overflow-y-auto">
                     {activeTab === "host-match" ? (
@@ -195,29 +183,11 @@ export default function SportsManagementPage() {
                               ))}
                             </div>
                           </div>
-                        )}
-
-                        {matches.length === 0 && (
-                          <div className="p-8 text-center">
-                            <p className="text-gray-500">No matches found. Create your first match!</p>
-                          </div>
-                        )}
+                        )}                      
                       </>
                     ) : (
                       <>
-                        {matches.length > 0 ? (
-                          <div className="p-4">
-                            <div className="space-y-3">
-                              {matches.map((match) => (
-                                <MatchCard key={match.id || match._id} match={match} />
-                              ))}
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="p-8 text-center">
-                            <p className="text-gray-500">No live matches available for score updates.</p>
-                          </div>
-                        )}
+
                       </>
                     )}
                   </div>
