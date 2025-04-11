@@ -12,7 +12,9 @@ const { CricketModel,
   sportRouter.get('/cricket', async (req, res) => {
     try {
       const matches = await CricketModel.find({});
-      res.json(matches);
+      res.json({
+        matches:matches
+      });
     } catch (error) {
       res.status(500).json({ 
         error: 'Error fetching matches' 

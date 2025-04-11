@@ -64,7 +64,7 @@ adminRouter.post("/signin", async(req, res) => {
     }
 });
 
-adminRouter.use(adminAuth);
+// adminRouter.use(adminAuth);
 
 adminRouter.post('/cricket', async (req, res) => {
 

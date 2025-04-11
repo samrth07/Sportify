@@ -4,11 +4,7 @@ const  adminRouter = require("./routes/admin");
 const sportRouter = require("./routes/matches");
 const creatorRouter = require('./routes/creator');
 const userRouter = require('./routes/community')
-const creatorRouter = require('./routes/creator');
 
-const creatorRouter = require('./routes/creator');
-
-const userRouter = require('./routes/community')
 
 
 const cors = require("cors");
