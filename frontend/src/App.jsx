@@ -12,6 +12,9 @@ import Cricket from './Sports/Cricket';
 // import Sports from './component/sports'; not in use 
 import NewNavbar from './component/NewNavbar';
 import Samarth from './component/Samarth';
+import Signupnew from './component/Signup UI';
+import article from './component/article';
+import Article from './component/article';
 
 function App() {
   
@@ -23,7 +26,7 @@ function App() {
        <Routes>
         
             <Route path='/' element={<Home/>}/>
-            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/signup' element={<Signupnew/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/sportAarya' element={<Sportpage/>}/>
             <Route path='/about' element={<About/>}/>
@@ -31,6 +34,7 @@ function App() {
             <Route path='/cricket' element={<Cricket/>}/>
             <Route path='/cricket' element={<Cricket/>}/>
             <Route path='/samarth' element={<Samarth/>}/>
+            <Route path='/article' element={<Article/>}/>
             
             {/* sport for arrays's url */}
             

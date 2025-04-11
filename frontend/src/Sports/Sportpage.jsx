@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CreateMatch from './createMatch'
-import LiveScore from './createMatch';
+import UpdateLive from '../component/updateLive';
 
 const Sportpage = () => {
   return (
@@ -59,6 +59,7 @@ const Sportpage = () => {
       </ul>
 
       <CreateMatch/>
+      <UpdateLive/>
     </div>
   )
 }

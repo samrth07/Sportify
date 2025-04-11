@@ -212,4 +212,112 @@ creatorRouter.get("/carrom", async (req, res) => {
   }
 })
 
+creatorRouter.get("/filter/cricket", async (req, res) => {
+
+  let matches = await CricketModel.find({
+    status: "live"
+  })
+
+  if(matches) {
+    res.json({
+      matches: matches
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "No live matches"
+    })
+  }
+})
+
+creatorRouter.get("/filter/football", async (req, res) => {
+
+  let matches = await FootballModel.find({
+    status: "live"
+  })
+
+  if(matches) {
+    res.json({
+      matches: matches
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "No live matches"
+    })
+  }
+})
+
+creatorRouter.get("/filter/kabaddi", async (req, res) => {
+
+  let matches = await KabaddiModel.find({
+    status: "live"
+  })
+
+  if(matches) {
+    res.json({
+      matches: matches
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "No live matches"
+    })
+  }
+})
+
+creatorRouter.get("/filter/carrom", async (req, res) => {
+
+  let matches = await CarromModel.find({
+    status: "live"
+  })
+
+  if(matches) {
+    res.json({
+      matches: matches
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "No live matches"
+    })
+  }
+})
+
+creatorRouter.get("/filter/badminton", async (req, res) => {
+
+  let matches = await BadmintonModel.find({
+    status: "live"
+  })
+
+  if(matches) {
+    res.json({
+      matches: matches
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "No live matches"
+    })
+  }
+})
+
+creatorRouter.get("/filter/basketball", async (req, res) => {
+
+  let matches = await BasketballModel.find({
+    status: "live"
+  })
+
+  if(matches) {
+    res.json({
+      matches: matches
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "No live matches"
+    })
+  }
+})
+
 module.exports = creatorRouter
