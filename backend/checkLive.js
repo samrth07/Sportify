@@ -3,8 +3,7 @@ const {CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, 
 // Runs every minute
 const checkMatchesToGoLiveCricket = async () => {
 
-    console.log("cron job running");
-  const now = new Date();
+  const now = new Date().setMilliseconds(0);
   const matchesToGoLive = await CricketModel.find({
     status: 'upcoming',
     startTime: { $lte: now }
@@ -18,7 +17,7 @@ const checkMatchesToGoLiveCricket = async () => {
 };
 
 const checkMatchesToGoLiveFootball = async () => {
-    const now = new Date();
+    const now = new Date().setMilliseconds(0);
     const matchesToGoLive = await FootballModel.find({
       status: 'upcoming',
       startTime: { $lte: now }
@@ -32,7 +31,7 @@ const checkMatchesToGoLiveFootball = async () => {
 };
 
 const checkMatchesToGoLiveBasketball = async () => {
-    const now = new Date();
+    const now = new Date().setMilliseconds(0);
     const matchesToGoLive = await BasketballModel.find({
       status: 'upcoming',
       startTime: { $lte: now }
@@ -46,7 +45,7 @@ const checkMatchesToGoLiveBasketball = async () => {
 };
 
 const checkMatchesToGoLiveCarrom = async () => {
-    const now = new Date();
+    const now = new Date().setMilliseconds(0);
     const matchesToGoLive = await CarromModel.find({
       status: 'upcoming',
       startTime: { $lte: now }
@@ -60,7 +59,7 @@ const checkMatchesToGoLiveCarrom = async () => {
 };
 
 const checkMatchesToGoLiveBadminton = async () => {
-    const now = new Date();
+    const now = new Date().setMilliseconds(0);
     const matchesToGoLive = await BadmintonModel.find({
       status: 'upcoming',
       startTime: { $lte: now }
@@ -87,9 +86,9 @@ const checkMatchesToGoLiveKabaddi = async () => {
     }
 };
 
-setInterval(checkMatchesToGoLiveCricket, 10 * 1000);
-setInterval(checkMatchesToGoLiveFootball, 10 * 1000);
-setInterval(checkMatchesToGoLiveBasketball, 10 * 1000);
-setInterval(checkMatchesToGoLiveKabaddi, 10 * 1000);
-setInterval(checkMatchesToGoLiveBadminton, 10 * 1000);
-setInterval(checkMatchesToGoLiveCarrom, 10 * 1000);
+// setInterval(checkMatchesToGoLiveCricket, 10 * 1000);
+// setInterval(checkMatchesToGoLiveFootball, 10 * 1000);
+// setInterval(checkMatchesToGoLiveBasketball, 10 * 1000);
+// setInterval(checkMatchesToGoLiveKabaddi, 10 * 1000);
+// setInterval(checkMatchesToGoLiveBadminton, 10 * 1000);
+//setInterval(checkMatchesToGoLiveCarrom, 10 * 1000);

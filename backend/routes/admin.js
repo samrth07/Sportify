@@ -72,12 +72,14 @@ adminRouter.post('/cricket', async (req, res) => {
     const team2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
+    const status = req.body.status;
 
     const trying = await CricketModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
-        startTime: startTime
+        startTime: startTime,
+        status: status
     })
 
     if(!trying) {
@@ -98,12 +100,14 @@ adminRouter.post('/football', async(req, res) => {
     const team2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
+    const status = req.body.status;
 
     const adding = await FootballModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
-        startTime: startTime
+        startTime: startTime,
+        status: status
     })
 
     if(!adding) {
@@ -124,13 +128,15 @@ adminRouter.post('/badminton', async(req, res) => {
     const teamB = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
+    const status = req.body.status;
 
 
     const adding = await BadmintonModel.create({
         teamA: teamA,
         teamB: teamB,
         date: date,
-        startTime: startTime
+        startTime: startTime,
+        status: status
     })
 
     if(!adding) {
@@ -151,13 +157,14 @@ adminRouter.post('/carrom', async(req, res) => {
     const player2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
+    const status = req.body.status;
 
     const adding = await CarromModel.create({
         teamA: player1,
         teamB: player2,
-
+        status: status,
         date: date,
-        startTime: startTime
+        startTime: startTime,
     })
 
     if(!adding) {
@@ -178,12 +185,14 @@ adminRouter.post('/basketball', async(req, res) => {
     const team2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
+    const status = req.body.status;
 
     const adding = await BasketballModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
-        startTime: startTime
+        startTime: startTime,
+        status: req.body.status
     })
 
     if(!adding) {
@@ -204,12 +213,14 @@ adminRouter.post('/kabaddi', async(req, res) => {
     const team2 = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
+    const status = req.body.status;
 
     const adding = await KabaddiModel.create({
         teamA: team1,
         teamB: team2,
         date: date,
-        startTime: startTime
+        startTime: startTime,
+        status: req.body.status
     })
 
     if(!adding) {

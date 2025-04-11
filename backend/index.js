@@ -22,7 +22,7 @@ app.use("/admin", adminRouter);
 app.use("/matches", sportRouter);
 app.use('/creator', creatorRouter);
 app.use('/user', userRouter);
-app.use('/creator', creatorRouter);
+app.use('/creator/live', creatorRouter);
 
 
 async function main() {
