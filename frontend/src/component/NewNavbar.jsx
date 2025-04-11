@@ -515,7 +515,7 @@ const NewNavbar = () => {
 
             {/* Login Buttons */}
             <div className="hidden md:flex space-x-4">
-              <Button
+              {/* <Button
                 size="sm"
                 className="bg-green-500 hover:bg-green-600 text-white shadow-md transition-all hover:shadow-lg"
                 onClick={() => {
@@ -535,7 +535,7 @@ const NewNavbar = () => {
                 }}
               >
                 Admin
-              </Button>
+              </Button> */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -572,7 +572,7 @@ const NewNavbar = () => {
                 <a href="#" className="text-green-800 font-medium hover:text-green-500 transition-colors">
                   News
                 </a>
-                <div className="flex space-x-4 pt-2">
+                {/* <div className="flex space-x-4 pt-2">
                   <Button
                     size="sm"
                     className="bg-green-500 hover:bg-green-600 text-white"
@@ -596,7 +596,7 @@ const NewNavbar = () => {
                   >
                     Admin Login
                   </Button>
-                </div>
+                </div> */}
               </nav>
             </div>
           </motion.div>
