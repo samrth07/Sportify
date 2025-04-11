@@ -101,8 +101,10 @@ creatorRouter.put('/basketball', async (req, res) => {
 creatorRouter.get("/cricket", async (req, res) => {
 
   const id = req.query.matchId;
-  let match = await CricketModel.findOne({
-    _id: id
+  let match = await CricketModel.find({
+    status : "live"
+  },{
+
   })
 
   if(match) {

@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const  adminRouter = require("./routes/admin");
 const sportRouter = require("./routes/matches");
-const userRouter = require('./routes/community')
 const creatorRouter = require('./routes/creator');
+const userRouter = require('./routes/community')
+
+
 
 const cors = require("cors");
 require("dotenv").config();
@@ -14,6 +16,7 @@ app.use(express.json());
 
 app.use("/admin", adminRouter);
 app.use("/matches", sportRouter);
+app.use('/creator', creatorRouter);
 app.use('/user', userRouter);
 app.use('/creator/live', creatorRouter);
 

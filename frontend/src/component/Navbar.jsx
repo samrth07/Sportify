@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className='flex justify-around gap-24'>
           <div className='flex justify-center gap-16 list-none font-bold'>
             <Link to={"/"} className='hover:border-2 border-solid rounded-3xl h-10 w-28 text-center hover:bg-amber-300'>Home</Link>
-            <Link to={'/samarth'} className='hover:border-2 border-solid rounded-3xl h-10 w-28 text-center hover:bg-amber-300'>About</Link>
+            <Link to={'/about'} className='hover:border-2 border-solid rounded-3xl h-10 w-28 text-center hover:bg-amber-300'>About</Link>
             <Link to={'/sportAarya'} className='hover:border-2 border-solid rounded-3xl h-10 w-28 text-center hover:bg-amber-300'>Sport</Link>
           </div>
 
