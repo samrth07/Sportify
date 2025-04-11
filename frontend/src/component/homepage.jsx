@@ -1,8 +1,14 @@
 "use client"
 
 import { useState, useEffect, forwardRef, createContext, useContext } from "react"
-import {motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay } from 'swiper/modules';
+
+
 
 // Custom Icon Components
 const ChevronRight = ({ className = "h-4 w-4" }) => (
@@ -461,28 +467,34 @@ export default function Home() {
   const [loginType, setLoginType] = useState("student")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [typedText, setTypedText] = useState("")
-  const fullText = "Game"
+  
 
-  // Typing effect for "Game" text
-  useEffect(() => {
-    if (typedText.length < fullText.length) {
-      const timeout = setTimeout(() => {
-        setTypedText(fullText.slice(0, typedText.length + 1))
-      }, 200)
-      return () => clearTimeout(timeout)
+const [typedText, setTypedText] = useState("");
+
+
+useEffect(() => {
+  const fullText = "Game"; // ✅ move it inside useEffect
+  let index = 0;
+  setTypedText("");
+  const typingDelay = 500;
+
+  const interval = setInterval(() => {
+    if (index < fullText.length) {
+      setTypedText((prev) => prev + fullText[index]);
+      index++;
+    } else {
+      clearInterval(interval);
     }
-  }, [typedText, fullText])
+  }, typingDelay);
 
-  // Reset typing effect when component mounts
-  useEffect(() => {
-    setTypedText("")
-    // Start typing after a delay
-    const timeout = setTimeout(() => {
-      setTypedText("G")
-    }, 1000)
-    return () => clearTimeout(timeout)
-  }, [])
+  return () => clearInterval(interval);
+}, []);
+
+
+
+
+
+  
 
   // Hero slider images
   const heroSlides = [
@@ -490,19 +502,17 @@ export default function Home() {
       id: 1,
       src: "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       alt: "Football match on college field",
-      title: "Football",
     },
     {
       id: 2,
       src: "https://images.unsplash.com/photo-1547941126-3d5322b218b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
       alt: "Cycling race with athletes in action",
-      title: "Cycling",
     },
     {
       id: 3,
       src: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1193&q=80",
       alt: "Students playing volleyball",
-      title: "Volleyball",
+
     },
   ]
 
@@ -559,21 +569,24 @@ export default function Home() {
   const sportsTips = [
     {
       id: 1,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://plus.unsplash.com/premium_photo-1674605363409-c40fc36aa304?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Proper Hydration Techniques",
       excerpt: "Learn how to stay properly hydrated before, during, and after intense sports activities.",
+      link: "https://www.scripps.org/news_items/6630-6-simple-ways-to-stay-hydrated"
     },
     {
       id: 2,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://images.unsplash.com/photo-1626178794106-474fa92d6524?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Injury Prevention Strategies",
       excerpt: "Discover the most effective warm-up routines and techniques to prevent common sports injuries.",
+      link:"https://www.hopkinsmedicine.org/health/conditions-and-diseases/sports-injuries/preventing-sports-injuries"
     },
     {
       id: 3,
-      image: "/placeholder.svg?height=400&width=600",
+      image: "https://plus.unsplash.com/premium_photo-1664476002571-ead0cbfc6d74?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       title: "Nutrition for Athletes",
       excerpt: "Fuel your performance with the right balance of nutrients for optimal athletic performance.",
+      link:"https://familydoctor.org/nutrition-for-athletes/"
     },
   ]
 
@@ -581,32 +594,32 @@ export default function Home() {
   const galleryImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      src: "https://images.unsplash.com/photo-1629901925121-8a141c2a42f4?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "Basketball players in action",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      src: "https://images.unsplash.com/photo-1715748141794-3d6a393675ae?q=80&w=1978&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "Football match on college field",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80",
+      src: "https://images.unsplash.com/photo-1599982946086-eb42d9e14eb8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNyaWNrZXR8ZW58MHx8MHx8fDA%3D",
       alt: "Cricket players celebrating",
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1193&q=80",
+      src: "https://images.unsplash.com/photo-1652558973276-7c57960f50cd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "Students playing volleyball",
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1599474401061-961d4a71b452?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+      src: "https://images.livemint.com/img/2021/12/18/original/Asian_Games_Kabaddi_GettyImages-1020458036_1639854336648.jpg",
       alt: "Table tennis tournament",
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1029&q=80",
+      src: "https://images.unsplash.com/photo-1719652934081-312060f185a1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       alt: "College athletics event",
     },
   ]
@@ -614,30 +627,19 @@ export default function Home() {
   // Testimonials data
   const testimonials = [
     {
-      id: 1,
-      quote:
-        "Sports have completely transformed my college experience. I've made lifelong friends and learned valuable leadership skills.",
-      name: "Rahul Sharma",
-      role: "Basketball Team Captain",
-      avatar: "/placeholder.svg?height=100&width=100",
+      quote: "Participating in college sports changed my confidence and teamwork skills. Truly unforgettable!",
+      name: "Aarav Deshmukh",
     },
     {
-      id: 2,
-      quote:
-        "Being part of the college cricket team taught me discipline and time management that has helped me excel academically too.",
-      name: "Priya Patel",
-      role: "Cricket Team Member",
-      avatar: "/placeholder.svg?height=100&width=100",
+      quote: "Our coach encouraged us to push boundaries, and we did. Zeal sports is next-level!",
+      name: "Sneha Kulkarni",
     },
     {
-      id: 3,
-      quote:
-        "The coaching staff at Zeal College has been instrumental in developing my athletic abilities and confidence.",
-      name: "Arjun Singh",
-      role: "Football Player",
-      avatar: "/placeholder.svg?height=100&width=100",
+      quote: "I joined just to stay active — now I’m representing Zeal at state level!",
+      name: "Rohit Pawar",
     },
-  ]
+  ];
+
 
   // Animation variants
   const containerVariants = {
@@ -672,7 +674,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}
-   
+
 
       {/* Hero Section with Image Slider */}
       <section className="relative">
@@ -691,9 +693,7 @@ export default function Home() {
                 <img
                   src={heroSlides[currentSlide].src || "/placeholder.svg"}
                   alt={heroSlides[currentSlide].alt}
-                  fill
-                  className="object-cover"
-                  priority
+                  className="object-cover w-full "
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 via-green-800/70 to-green-700/30"></div>
               </motion.div>
@@ -706,9 +706,8 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  currentSlide === index ? "bg-white w-8" : "bg-white/50"
-                }`}
+                className={`w-3 h-3 rounded-full transition-all ${currentSlide === index ? "bg-white w-8" : "bg-white/50"
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
@@ -726,19 +725,17 @@ export default function Home() {
                 <div className="inline-block px-3 py-1 mb-4 bg-green-500/20 backdrop-blur-sm rounded-full border border-green-500/30">
                   <span className="text-green-100 font-medium">{heroSlides[currentSlide].title}</span>
                 </div>
-                <h1 className="mb-4 text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
-                  Elevate Your{" "}
-                  <span className="text-green-300 relative inline-block">
-                    {typedText}
-                    <span className="animate-blink ml-0.5 inline-block h-10 w-1 bg-green-300"></span>
-                    <motion.span
-                      className="absolute -bottom-2 left-0 w-full h-1.5 bg-green-300 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: typedText.length ? "100%" : "0%" }}
-                      transition={{ delay: 0.5, duration: 0.8 }}
-                    ></motion.span>
-                  </span>
-                </h1>
+
+                <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl whitespace-nowrap">
+  Elevate Your{" "}
+  <span className="text-green-300 relative inline-flex items-center">
+    {typedText}
+    <span className="animate-blink ml-1 inline-block w-[2px] h-[1em] bg-green-300"></span>
+  </span>
+</h1>
+
+
+
                 <p className="mb-8 text-lg md:text-xl text-green-50 max-w-md">
                   Join Zeal College's premier sports platform. Track matches, celebrate victories, and be part of our
                   thriving sports community.
@@ -777,12 +774,8 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Trophy Icon */}
-          <motion.div className="absolute bottom-8 left-8 z-10" animate={pulseAnimation}>
-            <div className="bg-white/10 backdrop-blur-sm p-3 rounded-full border border-white/30">
-              <Trophy className="h-8 w-8 text-white" />
-            </div>
-          </motion.div>
+
+
         </div>
       </section>
 
@@ -828,7 +821,7 @@ export default function Home() {
                   Get real-time scores and updates for all college sports events as they happen.
                 </p>
                 <Button variant="link" className="text-green-500 p-0 h-auto font-medium group-hover:underline">
-                  Coming Soon <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+
                 </Button>
               </div>
             </motion.div>
@@ -853,7 +846,7 @@ export default function Home() {
                   Access archives of past games, statistics, and memorable sporting moments.
                 </p>
                 <Button variant="link" className="text-green-500 p-0 h-auto font-medium group-hover:underline">
-                  Coming Soon <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+
                 </Button>
               </div>
             </motion.div>
@@ -878,13 +871,32 @@ export default function Home() {
                   Stay informed with the latest news, announcements, and upcoming events.
                 </p>
                 <Button variant="link" className="text-green-500 p-0 h-auto font-medium group-hover:underline">
-                  Coming Soon <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+
                 </Button>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      <section className="py-20 bg-green-800 text-white text-center">
+        <h2 className="text-3xl font-bold mb-8">Our Sports Impact</h2>
+        <div className="flex flex-wrap justify-center gap-12 text-4xl font-semibold">
+          <div>
+            <p>🏆 12+</p>
+            <span className="block text-lg mt-2 font-normal">Tournaments Won</span>
+          </div>
+          <div>
+            <p>👥 500+</p>
+            <span className="block text-lg mt-2 font-normal">Active Players</span>
+          </div>
+          <div>
+            <p>🎽 10</p>
+            <span className="block text-lg mt-2 font-normal">Sports Clubs</span>
+          </div>
+        </div>
+      </section>
+
 
       {/* Benefits of Sports Section */}
       <section className="py-16">
@@ -926,6 +938,9 @@ export default function Home() {
         </div>
       </section>
 
+
+
+
       {/* College Sports Gallery */}
       <section className="py-16 bg-gradient-to-r from-green-800 to-green-700 text-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -950,30 +965,41 @@ export default function Home() {
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {galleryImages.map((image, index) => (
-              <motion.div
-                key={image.id}
-                variants={itemVariants}
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className={`overflow-hidden rounded-lg ${index === 0 ? "sm:col-span-2 sm:row-span-2" : ""}`}
-              >
-                <div className={`relative ${index === 0 ? "h-96" : "h-64"} w-full overflow-hidden group`}>
+          {/* Swiper Slider Start */}
+          <Swiper
+            modules={[Autoplay]}
+            autoplay={{ delay: 1500, disableOnInteraction: false }}
+            loop={true}
+            speed={800} // smoother and faster transitions
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="pb-8"
+          >
+            {galleryImages.map((image) => (
+              <SwiperSlide key={image.id}>
+                <div className="rounded-2xl overflow-hidden h-[400px] w-full group relative">
                   <img
                     src={image.src || "/placeholder.svg"}
                     alt={image.alt}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">{image.alt}</p>
-                  </div>
+                  {/* Optional: Hover overlay ring */}
+                  <div className="absolute inset-0 group-hover:ring-4 group-hover:ring-white/30 rounded-2xl transition duration-500" />
                 </div>
-              </motion.div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
+          {/* Swiper Slider End */}
         </div>
       </section>
+
+
+
 
       {/* Sports Tips Section */}
       <section className="py-16 bg-white">
@@ -1016,9 +1042,21 @@ export default function Home() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-green-800 mb-2">{tip.title}</h3>
                   <p className="text-green-700 mb-4">{tip.excerpt}</p>
-                  <Button className="bg-green-500 hover:bg-green-600 text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
-                    Read More <ArrowUpRight className="ml-1 h-4 w-4" />
-                  </Button>
+                  {tip.link ? (
+                    <a
+                      href={tip.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-4 py-2 rounded shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1"
+                    >
+                      Read More <ArrowUpRight className="ml-1 h-4 w-4" />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center bg-gray-400 text-white text-sm font-medium px-4 py-2 rounded shadow-md cursor-not-allowed">
+                      Coming Soon <ArrowUpRight className="ml-1 h-4 w-4" />
+                    </span>
+                  )}
+
                 </div>
               </motion.div>
             ))}
@@ -1027,66 +1065,32 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-gradient-to-b from-green-50 to-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div variants={itemVariants} className="inline-block mb-4 bg-green-100 px-4 py-1.5 rounded-full">
-              <span className="text-green-700 font-medium">Testimonials</span>
-            </motion.div>
-            <motion.h2 variants={itemVariants} className="text-3xl font-bold text-green-800 mb-4">
-              What People Say About Sport
-            </motion.h2>
-            <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-green-700">
-              Hear from our community about how sports have impacted their lives
-            </motion.p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <motion.div
-                key={testimonial.id}
-                variants={itemVariants}
-                whileHover={{ y: -10 }}
-                className="bg-white rounded-xl shadow-md overflow-hidden border border-green-100 p-6"
-              >
-                <div className="flex justify-center mb-4">
-                  <Quote className="h-10 w-10 text-green-500/20" />
-                </div>
-                <p className="text-green-800 mb-6 text-center italic">"{testimonial.quote}"</p>
-                <div className="flex items-center justify-center flex-col text-center">
-                  <div className="w-16 h-16 rounded-full overflow-hidden mb-3 border-2 border-green-500">
-                    <img
-                      src={testimonial.avatar || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      width={64}
-                      height={64}
-                      className="object-cover"
-                    />
-                  </div>
-                  <h4 className="font-bold text-green-800">{testimonial.name}</h4>
-                  <p className="text-green-600 text-sm">{testimonial.role}</p>
-                  <div className="flex mt-2 text-yellow-500">
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                    <Star className="h-4 w-4" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <section className="py-20 bg-green-800 text-white text-center">
+        <h2 className="text-3xl font-bold mb-10">What Our Students Say</h2>
+        <Swiper
+          modules={[Autoplay]}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
+          loop={true}
+          slidesPerView={1}
+          className="max-w-3xl mx-auto"
+        >
+          {testimonials.map((testimonial, index) => (
+            <SwiperSlide key={index}>
+              <div className="px-6">
+                <p className="text-xl italic leading-relaxed">
+                  “{testimonial.quote}”
+                </p>
+                <p className="mt-6 font-semibold text-green-100">{testimonial.name}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </section>
 
+
+
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-green-100 to-green-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div animate={pulseAnimation} className="inline-block rounded-full bg-green-200 p-3 mb-6">
