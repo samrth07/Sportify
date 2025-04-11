@@ -1,41 +1,4 @@
-// import React, { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import axios from 'axios';
-// import Card from './Card';
 
-// const Matches = () => {
-//   const { state } = useLocation();
-//   const sport = state?.sport || 'Cricket';
-
-//   const [matches, setMatches] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchMatches = async () => {
-//       try {
-//         const res = await axios.get(`http://localhost:3000/matches/${sport}`);
-//         setMatches(res.data); // should include status field
-//       } catch (err) {
-//         console.error(err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchMatches();
-//   }, [sport]);
-
-//   if (loading) return <div className="text-center mt-10">Loading {sport} matches...</div>;
-
-//   return (
-//     <div className="p-4">
-//       <h2 className="text-3xl font-bold text-center mb-6">{sport} Matches</h2>
-//       <Card matches={matches} />
-//     </div>
-//   );
-// };
-
-// export default Matches;
 
 
 "use client"
@@ -597,7 +560,7 @@ const Matches = () => {
         .cricket-hero {
           position: relative;
           height: 300px;
-          background: linear-gradient(rgba(16, 185, 129, 0.5), rgba(16, 185, 129, 0.3)), url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=1000&auto=format&fit=crop');
+          background: linear-gradient(rgba(16, 185, 129, 0.5), rgba(16, 185, 129, 0.3)), url('https://images.unsplash.com/photo-1589837520002-412b6b071d3b?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
           background-size: cover;
           background-position: center;
           color: white;

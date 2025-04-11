@@ -473,14 +473,14 @@ const [typedText, setTypedText] = useState("");
 
 
 useEffect(() => {
-  const fullText = "Game"; // ✅ move it inside useEffect
+  const fullText = "Game"; 
   let index = 0;
   setTypedText("");
   const typingDelay = 500;
 
   const interval = setInterval(() => {
     if (index < fullText.length) {
-      setTypedText((prev) => prev + fullText[index]);
+      setTypedText((prev) => fullText);
       index++;
     } else {
       clearInterval(interval);

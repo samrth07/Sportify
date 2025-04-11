@@ -490,7 +490,7 @@ const NewNavbar = () => {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <Trophy className="h-8 w-8 text-green-500 mr-2" />
-              <span className="text-2xl font-bold text-green-500">Sportyfy</span>
+              <span className="text-2xl font-bold text-green-500">Sportify</span>
             </div>
 
             {/* Desktop Navigation */}
