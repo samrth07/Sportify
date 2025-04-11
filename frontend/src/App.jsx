@@ -12,14 +12,11 @@ import Cricket from './Sports/Cricket';
 // import Sports from './component/sports'; not in use 
 import NewNavbar from './component/NewNavbar';
 import Samarth from './component/Samarth';
-<<<<<<< HEAD
 import CreateMatch from './Sports/createMatch';
 import Allsports from './LiveScore/Allsports';
-=======
 import Signupnew from './component/Signup UI';
 // import article from './component/article';
 import Article from './component/article';
->>>>>>> main
 
 function App() {
   
@@ -38,15 +35,12 @@ function App() {
             <Route path='/matches' element={<Matches/>}/> 
             <Route path='/cricket' element={<Cricket/>}/>
             <Route path='/cricket' element={<Cricket/>}/>
-<<<<<<< HEAD
             {/* <Route path='/samarth' element={<Samarth/>}/> */}
             <Route path='/creatematches' element={<CreateMatch/>}/>
             <Route path='/uploadscore' element={<Allsports/>}/>
 
-=======
             <Route path='/samarth' element={<Samarth/>}/>
             <Route path='/article' element={<Article/>}/>
->>>>>>> main
             
             {/* sport for arrays's url */}
             
