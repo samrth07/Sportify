@@ -803,7 +803,7 @@ export default function Home() {
               What We Offer
             </motion.h2>
             <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-green-700">
-              Sportyfy brings you the complete college sports experience with these amazing features
+              Sportify brings you the complete college sports experience with these amazing features
             </motion.p>
           </motion.div>
 
