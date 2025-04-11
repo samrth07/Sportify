@@ -18,7 +18,8 @@ const { CricketModel,
         error: 'Error fetching matches' 
 
     });
-  
+  }
+});
 
   //FOOTBALL 
 

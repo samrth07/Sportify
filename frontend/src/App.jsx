@@ -12,6 +12,8 @@ import Cricket from './Sports/Cricket';
 // import Sports from './component/sports'; not in use 
 import NewNavbar from './component/NewNavbar';
 import Samarth from './component/Samarth';
+import CreateMatch from './Sports/createMatch';
+import Allsports from './LiveScore/Allsports';
 
 function App() {
   
@@ -30,7 +32,10 @@ function App() {
             <Route path='/matches' element={<Matches/>}/> 
             <Route path='/cricket' element={<Cricket/>}/>
             <Route path='/cricket' element={<Cricket/>}/>
-            <Route path='/samarth' element={<Samarth/>}/>
+            {/* <Route path='/samarth' element={<Samarth/>}/> */}
+            <Route path='/creatematches' element={<CreateMatch/>}/>
+            <Route path='/uploadscore' element={<Allsports/>}/>
+
             
             {/* sport for arrays's url */}
             

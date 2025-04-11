@@ -26,12 +26,12 @@ const CreateMatch = () => {
       teamA,
       teamB,
       date: matchDate.toISOString(), // ensures JSON Date format
-      startTime: startTime.toISOString() 
+      startTime: startTime.toISOString().slice(0, 16) 
     };
     console.log(body)
     try {
       const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
-      console.log(res)
+      const matchId = res.data.matchId;
       alert(res.data.message);
       // const id = res.data.matchId;
     } catch (error) {

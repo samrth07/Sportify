@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+
 const Sportpage = () => {
   return (
     <div className="min-h-[92vh] bg-gradient-to-br from-blue-100 to-purple-100 p-6">
@@ -55,6 +56,11 @@ const Sportpage = () => {
           Basketball
         </Link>
       </ul>
+
+    <Link to={'/login'} className=' flex justify-center'>
+    <div className='text-4xl font-bold  mt-24 flex justify-center border-2 to-black rounded-3xl h-20 p-3 bg-amber-300'>
+        <p>Create/Update Matches</p>
+      </div></Link>
     </div>
   )
 }

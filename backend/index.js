@@ -4,6 +4,7 @@ const  adminRouter = require("./routes/admin");
 const sportRouter = require("./routes/matches");
 const creatorRouter = require('./routes/creator');
 const userRouter = require('./routes/community')
+const creatorRouter = require('./routes/creator');
 
 const creatorRouter = require('./routes/creator');
 
@@ -21,6 +22,7 @@ app.use("/admin", adminRouter);
 app.use("/matches", sportRouter);
 app.use('/creator', creatorRouter);
 app.use('/user', userRouter);
+app.use('/creator', creatorRouter);
 
 
 async function main() {

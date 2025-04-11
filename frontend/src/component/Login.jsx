@@ -32,7 +32,7 @@ const Login = () => {
       })
   
       alert(response.data.token);
-      navigate('/')
+      navigate('/uploadscore')
       login();
       setError('');
     }
