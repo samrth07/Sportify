@@ -3,11 +3,11 @@ import axios from "axios";
 
 const POLL_INTERVAL = 5000;
 
-function LiveScore({ sport, matchId }) {
+function LiveScore({ matchId }) {
   const [match, setMatch] = useState(null);
 
   const fetchMatch = async () => {
-    const res = await axios.get(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`);
+    const res = await axios.get(`http://localhost:3000/creator/live/cricket?matchId=${matchId}`);
     console.log(res);
     setMatch(res.data);
   };
@@ -19,15 +19,17 @@ function LiveScore({ sport, matchId }) {
   }, [matchId]);
 
   const updateScore = async (newData) => {
-    await axios.put(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`, newData);
+    await axios.put(`http://localhost:3000/creator/live/crciket?matchId=${matchId}`, newData);
     fetchMatch();
   };
 
   const increment = (team) => {
     if (!match) return;
     const updated = {
-      teamAGoals: team === "A" ? match.match.teamAGoals + 1 : match.match.teamAGoals,
-      teamBGoals: team === "B" ? match.match.teamBGoals + 1 : match.match.teamBGoals,
+      teamARuns: team === "A" ? match.match.teamARuns + 1 : match.match.teamARuns,
+      teamBRuns: team === "B" ? match.match.teamBRuns + 1 : match.match.teamBRuns,
+      teamAWickets: team === 'A' ? match.match.teamAWickets + 1 : match.match.teamAWickets,
+      teamBWickets: team === 'B' ? match.match.teamBWickets + 1 : match.match.teamBWickets,
     };
     updateScore(updated);
   };
@@ -35,8 +37,10 @@ function LiveScore({ sport, matchId }) {
   const decrement = (team) => {
     if (!match) return;
     const updated = {
-      teamAGoals: team === "A" ? Math.max(0, match.match.teamAGoals - 1) : match.match.teamAGoals,
-      teamBGoals: team === "B" ? Math.max(0, match.match.teamBGoals - 1) : match.match.teamBGoals,
+      teamARuns: team === "A" ? Math.max(0, match.match.teamARuns - 1) : match.match.teamARuns,
+      teamBRuns: team === "B" ? Math.max(0, match.match.teamBRuns - 1) : match.match.teamBRuns,
+      teamAWickets: team === "A" ? Math.max(0, match.match.teamAWickets - 1) : match.match.teamAWickets,
+      teamBWickets: team === "B" ? Math.max(0, match.match.teamBWickets - 1) : match.match.teamBWickets,
     };
     updateScore(updated);
   };
@@ -47,7 +51,7 @@ function LiveScore({ sport, matchId }) {
         <>
           <h2 className="text-xl font-bold mb-2">Live Score</h2>
           <p>
-            {match.match.teamA} {match.match.teamAGoals} - {match.match.teamB} {match.match.teamBGoals}
+            {match.match.teamA} {match.match.teamARuns} / {match.match.teamAWickets} - {match.match.teamBRuns} / {match.match.teamBWickets}
           </p>
           <p>Status: {match.match.status}</p>
 

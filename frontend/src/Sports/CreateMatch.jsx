@@ -27,8 +27,6 @@ const CreateMatch = () => {
     try {
       const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
       const newMatchId = res.data.matchId;
-      console.log(res);
-      console.log(newMatchId);
       setMatchId(newMatchId);
       alert(res.data.message || "Match created");
     } catch (error) {
@@ -36,6 +34,10 @@ const CreateMatch = () => {
       alert("Error creating match");
     }
   };
+
+  const getLiveMatches = async() => {
+    const matches = await axios.get(`http://localhost:3000/creator/live/${selectedSport}`);
+  }
 
   return (
     <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-10">
@@ -99,8 +101,13 @@ const CreateMatch = () => {
         Create Match
       </button>
 
-      {status === "live" && matchId && (
+
+      {selectedSport !=='cricket' && status === "live" && matchId && (
         <LiveScore sport={selectedSport} matchId={matchId} />
+      )}
+
+      {selectedSport === 'cricket' && status === 'live' && matchId && (
+        <cricketLive matchId={matchId}/>
       )}
     </div>
   );
