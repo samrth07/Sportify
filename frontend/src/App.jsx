@@ -17,7 +17,8 @@ import Allsports from './LiveScore/Allsports';
 import Signupnew from './component/Signup UI';
 // import article from './component/article';
 import Article from './component/article';
-
+import LiveMatchCard from './LiveScore/LiveMatchCard';
+import LiveScore from './component/LiveComponent';
 function App() {
   
 
@@ -41,6 +42,7 @@ function App() {
 
             <Route path='/samarth' element={<Samarth/>}/>
             <Route path='/article' element={<Article/>}/>
+            <Route path='/livescore' element={<LiveScore/>}/>
             
             {/* sport for arrays's url */}
             
