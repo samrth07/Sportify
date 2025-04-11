@@ -45,14 +45,7 @@ const Card = ({ matches }) => {
       </div>
     </div>
 
-// teamA: String,
-// teamB: String,
-// winningTeam: {type: String, default:null},
-// teamAGoals: {type: Number, default:0},
-// teamBGoals: {type: Number, default:0},
-// date: Date,
-// startTime: Date,
-// status: { type: String, enum: ['upcoming', 'live', 'completed'], default: 'upcoming' },
+
   );
 };
 

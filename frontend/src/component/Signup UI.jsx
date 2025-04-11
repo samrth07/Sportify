@@ -1,10 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
+import { Link } from "react-router-dom";
+
 import { ArrowRight, BirdIcon as Cricket, Eye, EyeOff, Mail, Lock, User, Calendar } from "lucide-react"
 
-export default function Signup() {
+export default function Signupnew() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState(1)
