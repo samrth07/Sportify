@@ -3,7 +3,7 @@ import axios from "axios";
 
 const POLL_INTERVAL = 5000;
 
-function LiveScore({ matchId }) {
+function CricketLiveScore({ matchId }) {
   const [match, setMatch] = useState(null);
 
   const fetchMatch = async () => {
@@ -74,4 +74,4 @@ function LiveScore({ matchId }) {
   );
 }
 
-export default LiveScore;
+export default CricketLiveScore;

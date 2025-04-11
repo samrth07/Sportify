@@ -7,9 +7,9 @@ const UpdateLive = () => {
   const [updatingId, setUpdatingId] = useState(null); // for loading state of a specific card
 
   useEffect(() => {
-    const fetchMatches = async ( {sport} ) => {
+    const fetchMatches = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/creator/live/filter/${sport}`);
+        const res = await axios.get(`http://localhost:3000/creator/live/filter/kabaddi`);
         setMatches(res.data.matches);
       } catch (err) {
         console.error("Error fetching live matches", err);
@@ -34,7 +34,7 @@ const UpdateLive = () => {
     setUpdatingId(matchId);
     console.log(matchId);
     try {
-      await axios.put(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`, {
+      await axios.put(`http://localhost:3000/creator/live/kabaddi?matchId=${matchId}`, {
         teamAGoals,
         teamBGoals
       });
