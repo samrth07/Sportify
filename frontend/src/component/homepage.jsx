@@ -4,7 +4,6 @@ import { useState, useEffect, forwardRef, createContext, useContext } from "reac
 import {motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 
-
 // Custom Icon Components
 const ChevronRight = ({ className = "h-4 w-4" }) => (
   <svg

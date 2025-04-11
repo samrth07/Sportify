@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // creatorRouter.use(adminAuth);
 
-creatorRouter.put('/live/badminton', async (req, res) => {
+creatorRouter.put('/badminton', async (req, res) => {
     const matchId = req.query.matchId;
     const teamAGoals = req.body.teamAGoals;
     const teamBGoals = req.body.teamBGoals;
@@ -21,7 +21,7 @@ creatorRouter.put('/live/badminton', async (req, res) => {
     res.json(updatedMatch);
 });
 
-creatorRouter.put('/live/cricket', async (req, res) => {
+creatorRouter.put('/cricket', async (req, res) => {
     const matchId = req.query.matchId;
     const teamARuns = req.body.teamAGoals;
     const teamAWickets = req.body.teamAWickets;
@@ -38,7 +38,7 @@ creatorRouter.put('/live/cricket', async (req, res) => {
     res.json(updatedMatch);
 });
 
-creatorRouter.put('/live/football', async (req, res) => {
+creatorRouter.put('/football', async (req, res) => {
     const matchId = req.query.matchId;
     const teamAGoals = req.body.teamAGoals;
     const teamBGoals = req.body.teamBGoals;
@@ -53,7 +53,7 @@ creatorRouter.put('/live/football', async (req, res) => {
     res.json(updatedMatch);
 });
 
-creatorRouter.put('/live/carrom', async (req, res) => {
+creatorRouter.put('/carrom', async (req, res) => {
     const matchId = req.query.matchId;
     const teamAGoals = req.body.teamAGoals;
     const teamBGoals = req.body.teamBGoals;
@@ -68,7 +68,7 @@ creatorRouter.put('/live/carrom', async (req, res) => {
     res.json(updatedMatch);
 });
 
-creatorRouter.put('/live/kabaddi', async (req, res) => {
+creatorRouter.put('/kabaddi', async (req, res) => {
     const matchId = req.query.matchId;
     const teamAGoals = req.body.teamAGoals;
     const teamBGoals = req.body.teamBGoals;
@@ -83,7 +83,7 @@ creatorRouter.put('/live/kabaddi', async (req, res) => {
     res.json(updatedMatch);
 });
 
-creatorRouter.put('/live/basketball', async (req, res) => {
+creatorRouter.put('/basketball', async (req, res) => {
     const matchId = req.query.matchId;
     const teamAGoals = req.body.teamAGoals;
     const teamBGoals = req.body.teamBGoals;
@@ -97,5 +97,119 @@ creatorRouter.put('/live/basketball', async (req, res) => {
   
     res.json(updatedMatch);
 });
+
+creatorRouter.get("/cricket", async (req, res) => {
+
+  const id = req.query.matchId;
+  let match = await CricketModel.findOne({
+    _id: id
+  })
+
+  if(match) {
+    res.json({
+      match: match
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "Match not found"
+    })
+  }
+})
+
+creatorRouter.get("/football", async (req, res) => {
+
+  const id = req.query.matchId;
+  let match = await FootballModel.findOne({
+    _id: id
+  })
+
+  if(match) {
+    res.json({
+      match: match
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "Match not found"
+    })
+  }
+})
+
+creatorRouter.get("/basketball", async (req, res) => {
+
+  const id = req.query.matchId;
+  let match = await BasketballModel.findOne({
+    _id: id
+  })
+
+  if(match) {
+    res.json({
+     match: match
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "Match not found"
+    })
+  }
+})
+
+creatorRouter.get("/badminton", async (req, res) => {
+
+  const id = req.query.matchId;
+  let match = await BadmintonModel.findOne({
+    _id: id
+  })
+
+  if(match) {
+    res.json ({
+      match: match
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "Match not found"
+    })
+  }
+})
+
+creatorRouter.get("/kabaddi", async (req, res) => {
+
+  const id = req.query.matchId;
+  let match = await KabaddiModel.findOne({
+    _id: id
+  })
+
+  if(match) {
+    res.json({
+      match: match
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "Match not found"
+    })
+  }
+})
+
+creatorRouter.get("/carrom", async (req, res) => {
+
+  const id = req.query.matchId;
+  let match = await CarromModel.findOne({
+    _id: id
+  })
+
+  if(match) {
+    res.json({
+      match: match
+    })
+  }
+  else {
+    res.status(404).json ({
+      message: "Match not found"
+    })
+  }
+})
 
 module.exports = creatorRouter

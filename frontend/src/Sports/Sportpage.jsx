@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import CreateMatch from './createMatch'
+import LiveScore from './createMatch';
 
 const Sportpage = () => {
   return (
@@ -55,6 +57,8 @@ const Sportpage = () => {
           Basketball
         </Link>
       </ul>
+
+      <CreateMatch/>
     </div>
   )
 }
