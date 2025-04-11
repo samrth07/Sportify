@@ -35,8 +35,8 @@ function LiveScore({ sport, matchId }) {
   const decrement = (team) => {
     if (!match) return;
     const updated = {
-      teamAGoals: team === "A" ? Math.max(0, match.teamAGoals - 1) : match.teamAGoals,
-      teamBGoals: team === "B" ? Math.max(0, match.teamBGoals - 1) : match.teamBGoals,
+      teamAGoals: team === "A" ? Math.max(0, match.match.teamAGoals - 1) : match.match.teamAGoals,
+      teamBGoals: team === "B" ? Math.max(0, match.match.teamBGoals - 1) : match.match.teamBGoals,
     };
     updateScore(updated);
   };
