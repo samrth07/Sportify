@@ -1155,7 +1155,7 @@ export default function Home() {
             <div>
               <div className="flex items-center mb-4">
                 <Trophy className="h-8 w-8 text-green-300 mr-2" />
-                <span className="text-2xl font-bold text-green-300">Sportyfy</span>
+                <span className="text-2xl font-bold text-green-300">Sportify</span>
               </div>
               <p className="text-green-200 mb-4">
                 The ultimate platform for college sports updates, bringing the excitement of every match to your
@@ -1213,7 +1213,7 @@ export default function Home() {
                     className="text-green-200 hover:text-green-300 transition-colors inline-flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    News
+                    Articles
                   </a>
                 </li>
                 <li>
@@ -1292,7 +1292,7 @@ export default function Home() {
           </div>
 
           <div className="border-t border-green-700 mt-8 pt-8 text-center text-green-200">
-            <p>© {new Date().getFullYear()} Sportyfy. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Sportify. All rights reserved.</p>
             <p className="mt-2 text-sm">Designed and developed for Zeal College</p>
           </div>
         </div>

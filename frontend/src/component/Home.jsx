@@ -3,16 +3,6 @@ import LiveScore from '../Sports/LiveComponent';
 import CreateMatch from '../Sports/createMatch';
 import LiveScore from './LiveComponent';
 
-<<<<<<< HEAD
-
-import LiveScore from '../Sports/LiveComponent';
-
-import CreateMatch from '../Sports/createMatch';
-
-
-
-=======
->>>>>>> main
 const HomeOld = () => {
   return (
     <div>
@@ -20,16 +10,6 @@ const HomeOld = () => {
                 <LiveScore/>
                 <CreateMatch/>
                 <LiveScore/>
-<<<<<<< HEAD
-                
-
-                <LiveScore/>
-
-              
-                
-
-=======
->>>>>>> main
     </div>
   )
 }

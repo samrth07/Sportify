@@ -340,19 +340,19 @@ const Cricket = () => {
                       <div className="match-teams">
                         <div className="team">
                           <span className="team-name">{match.teamA}</span>
-                          <span className="team-score">{match.teamAGoals || 0}</span>
+                          <span className="team-score">{match.teamARuns || 0}</span>
                         </div>
                         <div className="vs">VS</div>
                         <div className="team">
                           <span className="team-name">{match.teamB}</span>
-                          <span className="team-score">{match.teamBGoals || 0}</span>
+                          <span className="team-score">{match.teamBRuns || 0}</span>
                         </div>
                       </div>
                       <div className="match-status">
-                        {match.teamAGoals > match.teamBGoals
-                          ? `${match.teamA} leads by ${match.teamAGoals - match.teamBGoals} runs`
-                          : match.teamBGoals > match.teamAGoals
-                            ? `${match.teamB} leads by ${match.teamBGoals - match.teamAGoals} runs`
+                        {match.teamARuns > match.teamBRuns
+                          ? `${match.teamA} leads by ${match.teamARuns - match.teamBRuns} runs`
+                          : match.teamBRuns > match.teamARuns
+                            ? `${match.teamB} leads by ${match.teamBRuns - match.teamARuns} runs`
                             : "Match is tied"}
                       </div>
                       <button className="view-details-btn">View Details</button>
@@ -419,12 +419,12 @@ const Cricket = () => {
                       <div className="match-teams">
                         <div className="team">
                           <span className="team-name">{match.teamA}</span>
-                          <span className="team-score">{match.teamAGoals || 0}</span>
+                          <span className="team-score">{match.teamARuns || 0}</span>
                         </div>
                         <div className="vs">VS</div>
                         <div className="team">
                           <span className="team-name">{match.teamB}</span>
-                          <span className="team-score">{match.teamBGoals || 0}</span>
+                          <span className="team-score">{match.teamBRuns || 0}</span>
                         </div>
                       </div>
                       <div className="match-result">
@@ -432,9 +432,9 @@ const Cricket = () => {
                           ? "Match ended in a draw"
                           : match.winningTeam
                             ? `${match.winningTeam} won the match`
-                            : match.teamAGoals > match.teamBGoals
-                              ? `${match.teamA} won by ${match.teamAGoals - match.teamBGoals} runs`
-                              : `${match.teamB} won by ${match.teamBGoals - match.teamAGoals} runs`}
+                            : match.teamARuns > match.teamBRuns
+                              ? `${match.teamA} won by ${match.teamARuns - match.teamBRuns} runs`
+                              : `${match.teamB} won by ${match.teamBRuns - match.teamARuns} runs`}
                       </div>
                       <button className="view-details-btn">View Scorecard</button>
                     </div>

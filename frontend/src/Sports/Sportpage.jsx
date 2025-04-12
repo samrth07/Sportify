@@ -17,7 +17,7 @@ const Sportpage = () => {
       name: "Kabaddi",
       route: "/matches",
       state: { sport: "kabaddi" },
-      image: "https://images.unsplash.com/photo-1582093458397-8ef076ebad13?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1660501603234-b287d27cbdc0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzR8fGluZGlhbiUyMHNwb3J0c3xlbnwwfHwwfHx8MA%3D%3D",
       description:
         "Follow kabaddi tournaments and matches. Get real-time updates on raids, tackles and match progression.",
     },
@@ -44,7 +44,7 @@ const Sportpage = () => {
       name: "Carrom",
       route: "/matches",
       state: { sport: "carrom" },
-      image: "https://images.unsplash.com/photo-1611251135345-18c56206d219?q=80&w=1000&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1652558973197-498325ed3758?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2Fycm9tfGVufDB8fDB8fHww",
       description: "Track carrom board competitions. Follow match scores, player rankings, and tournament brackets.",
     },
     {
@@ -87,156 +87,137 @@ const Sportpage = () => {
 
       {/* CSS Styles */}
       <style jsx>{`
-        /* Global Styles */
-        * {
-         
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        .sports-page {
-          width: 100%;
-          min-height: 100vh;
-          background-color: #f5f5f5;
-          padding-bottom: 2rem;
-        }
-
-        /* Sports Hero Section */
-        .sports-hero {
-          background: linear-gradient(rgba(245, 158, 11, 0.9), rgba(245, 158, 11, 0.7)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop');
-          background-size: cover;
-          background-position: center;
-          color: white;
-          text-align: center;
-          padding: 4rem 2rem;
-          margin-bottom: 2rem;
-        }
-
-        .sports-hero h1 {
-          font-size: 2.5rem;
-          margin-bottom: 1rem;
-          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .sports-hero p {
-          font-size: 1.2rem;
-          max-width: 600px;
-          margin: 0 auto;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Sports Grid */
-        .sports-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          gap: 2rem;
-          padding: 0 2rem;
-          max-width: 1400px;
-          margin: 0 auto;
-        }
-
-        .sport-card {
-          background-color: white;
-          border-radius: 0.5rem;
-          overflow: hidden;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          text-decoration: none;
-          color: inherit;
-          display: block;
-        }
-
-        .sport-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-image-container {
-          position: relative;
-          height: 200px;
-          overflow: hidden;
-        }
-
-        .card-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
-        }
-
-        .sport-card:hover .card-image {
-          transform: scale(1.05);
-        }
-
-        .card-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(245, 158, 11, 0.7);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-
-        .sport-card:hover .card-overlay {
-          opacity: 1;
-        }
-
-        .view-scores {
-          color: white;
-          font-weight: 600;
-          background-color: rgba(0, 0, 0, 0.5);
-          padding: 0.5rem 1rem;
-          border-radius: 2rem;
-        }
-
-        .card-content {
-          padding: 1.5rem;
-        }
-
-        .sport-name {
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-          color: #333;
-        }
-
-        .sport-description {
-          color: #666;
-          margin-bottom: 1rem;
-          line-height: 1.5;
-        }
-
-        .score-btn {
-          background-color: #f59e0b;
-          color: white;
-          border: none;
-          padding: 0.5rem 1rem;
-          border-radius: 0.25rem;
-          cursor: pointer;
-          font-weight: 500;
-          transition: background-color 0.3s ease;
-          display: inline-block;
-          text-align: center;
-        }
-
-        .score-btn:hover {
-          background-color: #d97706;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-          .sports-hero h1 {
-            font-size: 2rem;
-          }
-          
-          .sports-grid {
-            grid-template-columns: 1fr;
-            padding: 0 1rem;
-          }
-        }
+       /* Global Styles */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.sports-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding-bottom: 2rem;
+}
+/* Sports Hero Section */
+.sports-hero {
+  background: linear-gradient(rgba(34, 197, 94, 0.9), rgba(34, 197, 94, 0.7)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+}
+.sports-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.sports-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+/* Sports Grid */
+.sports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.sport-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 1px solid rgba(34, 197, 94, 0.1);
+}
+.sport-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+.card-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.sport-card:hover .card-image {
+  transform: scale(1.05);
+}
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 197, 94, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.sport-card:hover .card-overlay {
+  opacity: 1;
+}
+.view-scores {
+  color: white;
+  font-weight: 600;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+.card-content {
+  padding: 1.5rem;
+}
+.sport-name {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+.sport-description {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+.score-btn {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  text-align: center;
+}
+.score-btn:hover {
+  background-color: #16a34a;
+}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sports-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .sports-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+}
       `}</style>
     </div>
   )

@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import LiveScore from "../component/LiveComponent";
+import { Calendar, Clock, Users } from "lucide-react"
 
 const sportsOptions = ["basketball", "football", "kabaddi", "cricket", "carrom", "badminton"];
 
@@ -26,6 +27,7 @@ const CreateMatch = () => {
 
     try {
       const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
+      console.log(res.data.matchId);
       const newMatchId = res.data.matchId;
       setMatchId(newMatchId);
       alert(res.data.message || "Match created");
@@ -34,82 +36,138 @@ const CreateMatch = () => {
       alert("Error creating match");
     }
   };
-
-  const getLiveMatches = async() => {
-    const matches = await axios.get(`http://localhost:3000/creator/live/${selectedSport}`);
-  }
-
   return (
-    <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md mt-10">
-      <h2 className="text-xl font-bold mb-4">Create Match</h2>
 
-      <label className="block mb-1">Sport</label>
-      <select
-        className="w-full border p-2 mb-4 rounded"
-        value={selectedSport}
-        onChange={(e) => setSelectedSport(e.target.value)}
-      >
-        {sportsOptions.map((sport) => (
-          <option key={sport} value={sport}>{sport}</option>
-        ))}
-      </select>
+ <div className="space-y-5">
+    <div className="space-y-3">
+      <div>
+        <label htmlFor="sport" className="block text-green-800 font-medium mb-1">
+          Sport
+        </label>
+        <select
+            id="sport"
+            value={selectedSport}
+            onChange={(e) => setSelectedSport(e.target.value)}
+            className="w-full bg-white border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+            required
+          >
+            {sportsOptions.map((sport) => (
+              <option key={sport} value={sport}>
+                {sport.charAt(0).toUpperCase() + sport.slice(1)}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <input
-        className="w-full border p-2 mb-4"
-        placeholder="Team A"
-        value={teamA}
-        onChange={(e) => setTeamA(e.target.value)}
-      />
-      <input
-        className="w-full border p-2 mb-4"
-        placeholder="Team B"
-        value={teamB}
-        onChange={(e) => setTeamB(e.target.value)}
-      />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="teamA" className="block text-green-800 font-medium mb-1">
+              Team A
+            </label>
+            <div className="relative">
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500 h-4 w-4" />
+              <input
+                id="teamA"
+                name="teamA"
+                value={teamA}
+                onChange={(e) => setTeamA(e.target.value)}
+                placeholder="Enter team A name"
+                className="w-full pl-10 border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="teamB" className="block text-green-800 font-medium mb-1">
+              Team B
+            </label>
+            <div className="relative">
+              <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500 h-4 w-4" />
+              <input
+                id="teamB"
+                name="teamB"
+                value={teamB}
+                onChange={(e) => setTeamB(e.target.value)}
+                placeholder="Enter team B name"
+                className="w-full pl-10 border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                required
+              />
+            </div>
+          </div>
+        </div>
 
-      <label className="block mb-1">Match Date</label>
-      <DatePicker
-        selected={matchDate}
-        onChange={(date) => setMatchDate(date)}
-        dateFormat="MMMM d, yyyy"
-        className="border p-2 rounded mb-4 w-full"
-      />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="date" className="block text-green-800 font-medium mb-1">
+              Match Date
+            </label>
+            <div className="relative">
+              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500 h-4 w-4 z-10" />
+              <DatePicker
+                selected={matchDate}
+                onChange={(date) => setMatchDate(date)}
+                dateFormat="MMMM d, yyyy"
+                className="w-full pl-10 border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                required
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="time" className="block text-green-800 font-medium mb-1">
+              Start Time
+            </label>
+            <div className="relative">
+              <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-green-500 h-4 w-4 z-10" />
+              <DatePicker
+                selected={startTime}
+                onChange={(date) => setStartTime(date)}
+                showTimeSelect
+                showTimeSelectOnly
+                timeIntervals={30}
+                timeCaption="Time"
+                dateFormat="h:mm aa"
+                className="w-full pl-10 border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                required
+              />
+            </div>
+          </div>
+        </div>
 
-      <label className="block mb-1">Start Time</label>
-      <DatePicker
-        selected={startTime}
-        onChange={(date) => setStartTime(date)}
-        showTimeSelect
-        showTimeSelectOnly
-        timeIntervals={30}
-        timeCaption="Time"
-        dateFormat="h:mm aa"
-        className="border p-2 rounded mb-4 w-full"
-      />
-
-      <input
-        className="w-full border p-2 mb-4"
-        placeholder="live || upcoming || completed"
-        value={status}
-        onChange={(e) => setStatus(e.target.value)}
-      />
+        <div>
+          <label htmlFor="status" className="block text-green-800 font-medium mb-1">
+            Initial Status
+          </label>
+          <select
+            id="status"
+            name="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            className="w-full bg-white border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+          >
+            <option value="upcoming">Upcoming</option>
+            <option value="live">Live</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+      </div>
 
       <button
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        onClick={handleCreateMatch}
+        type="submit"
+        className={`w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md `}
+      onClick={handleCreateMatch}
       >
         Create Match
-      </button>
-
+        
+      </button> 
 
       {selectedSport !=='cricket' && status === "live" && matchId && (
         <LiveScore sport={selectedSport} matchId={matchId} />
       )}
 
-      {selectedSport === 'cricket' && status === 'live' && matchId && (
-        <cricketLive matchId={matchId}/>
-      )}
-    </div>
+      {/* {selectedSport === 'cricket' && status === 'live' && matchId && (
+        <CricketLive matchId={matchId}/>
+      )} */}
+      </div>
   );
 };
 

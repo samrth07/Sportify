@@ -6,13 +6,15 @@ import { Activity, PlusCircle, MinusCircle } from "lucide-react"
 
 const POLL_INTERVAL = 5000
 
-const LiveMatchCard = ({ matchId, sport }) => {
+const LiveMatchCard = ({ matchId, selectedSport }) => {
   const [match, setMatch] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const fetchMatch = async () => {
     try {
-      const res = await axios.get(`/api/livescore/${matchId}`)
+      console.log(matchId);
+      const res = await axios.get(`http://localhost:3000/creator/live/basketball?${matchId}`)
+      console.log(res);
       setMatch(res.data)
     } catch (error) {
       console.error("Error fetching match:", error)
@@ -28,7 +30,8 @@ const LiveMatchCard = ({ matchId, sport }) => {
   const updateScore = async (newData) => {
     setLoading(true)
     try {
-      await axios.post(`/admin/live/${matchId}`, newData)
+      const res = await axios.put(`http://localhost:3000/creator/live/basketball/?${matchId}`, newData);
+      console.log(res);
       fetchMatch() // Optimistic update
     } catch (error) {
       console.error("Error updating score:", error)
@@ -40,8 +43,8 @@ const LiveMatchCard = ({ matchId, sport }) => {
   const increment = (team) => {
     if (!match) return
     const updated = {
-      scoreA: team === "A" ? match.scoreA + 1 : match.scoreA,
-      scoreB: team === "B" ? match.scoreB + 1 : match.scoreB,
+      scoreA: team === "A" ? match.teamAGoals + 1 : match.teamAGoals,
+      scoreB: team === "B" ? match.teamBGoals + 1 : match.teamBGoals,
       status: match.status,
     }
     updateScore(updated)
@@ -50,8 +53,8 @@ const LiveMatchCard = ({ matchId, sport }) => {
   const decrement = (team) => {
     if (!match) return
     const updated = {
-      scoreA: team === "A" ? Math.max(0, match.scoreA - 1) : match.scoreA,
-      scoreB: team === "B" ? Math.max(0, match.scoreB - 1) : match.scoreB,
+      scoreA: team === "A" ? Math.max(0, match.teamAGoals - 1) : match.teamAGoals,
+      scoreB: team === "B" ? Math.max(0, match.teamBGoals - 1) : match.teamBGoals,
       status: match.status,
     }
     updateScore(updated)
@@ -88,7 +91,7 @@ const LiveMatchCard = ({ matchId, sport }) => {
             >
               <MinusCircle className="h-6 w-6" />
             </button>
-            <span className="mx-3 text-2xl font-bold">{match.scoreA}</span>
+            <span className="mx-3 text-2xl font-bold">{match.teamAGoals}</span>
             <button
               onClick={() => increment("A")}
               className="text-green-600 hover:text-green-800 focus:outline-none"
@@ -113,7 +116,7 @@ const LiveMatchCard = ({ matchId, sport }) => {
             >
               <MinusCircle className="h-6 w-6" />
             </button>
-            <span className="mx-3 text-2xl font-bold">{match.scoreB}</span>
+            <span className="mx-3 text-2xl font-bold">{match.teamBGoals}</span>
             <button
               onClick={() => increment("B")}
               className="text-green-600 hover:text-green-800 focus:outline-none"
