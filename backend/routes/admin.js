@@ -51,7 +51,7 @@ adminRouter.post("/signin", async(req, res) => {
     if(!validation) {
         res.status(404).json ({
             message: "Invalid password"
-        })
+        }) 
         return;
     }
     else {
