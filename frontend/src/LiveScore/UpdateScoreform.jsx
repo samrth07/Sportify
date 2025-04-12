@@ -8,6 +8,7 @@ const UpdateScoreForm = ({ matches, selectedSport, onSportChange }) => {
   const [selectedMatch, setSelectedMatch] = useState(null)
   const [loading, setLoading] = useState(false)
   const [matchData, setMatchData] = useState(null)
+  const [sport , setsport] = useState('kabaddi')
 
   const SPORTS = ["basketball", "football", "kabaddi", "cricket", "carrom", "badminton"]
 
@@ -19,8 +20,9 @@ const UpdateScoreForm = ({ matches, selectedSport, onSportChange }) => {
 
   const fetchMatchDetails = async (matchId) => {
     try {
-      const res = await axios.get(`/api/livescore/${matchId}`)
+      const res = await axios.get(`http://localhost:3000/creator/${sport}`)
       setMatchData(res.data)
+      console.log("from the form data : "+res)
     } catch (error) {
       console.error("Error fetching match details:", error)
     }
@@ -28,6 +30,7 @@ const UpdateScoreForm = ({ matches, selectedSport, onSportChange }) => {
 
   const handleSportChange = (e) => {
     const sport = e.target.value
+    setsport(sport)
     onSportChange(sport)
     setSelectedMatch(null)
     setMatchData(null)
@@ -105,96 +108,8 @@ const UpdateScoreForm = ({ matches, selectedSport, onSportChange }) => {
         </select>
       </div>
 
-      <div>
-        <label htmlFor="matchId" className="block text-green-800 font-medium mb-1">
-          Select Match
-        </label>
-        <select
-          id="matchId"
-          value={selectedMatch || ""}
-          onChange={handleMatchChange}
-          className="w-full bg-white border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-          required
-        >
-          <option value="">-- Select a match --</option>
-          {matches.map((match) => (
-            <option key={match.id || match._id} value={match.id || match._id}>
-              {match.teamA} vs {match.teamB}
-            </option>
-          ))}
-        </select>
-      </div>
+      
 
-      {matchData && (
-        <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-          <div className="flex items-center justify-center mb-2">
-            <Activity className="h-5 w-5 text-red-500 mr-2" />
-            <span className="text-red-500 font-medium">LIVE</span>
-          </div>
-
-          <div className="flex justify-between items-center mb-4">
-            <div className="text-center flex-1">
-              <p className="font-semibold text-lg text-green-800">{matchData.teamA}</p>
-              <div className="flex items-center justify-center mt-2">
-                <button
-                  onClick={() => decrement("A")}
-                  className="text-red-500 hover:text-red-700 focus:outline-none"
-                  disabled={loading}
-                >
-                  <MinusCircle className="h-6 w-6" />
-                </button>
-                <span className="mx-3 text-2xl font-bold">{matchData.scoreA}</span>
-                <button
-                  onClick={() => increment("A")}
-                  className="text-green-600 hover:text-green-800 focus:outline-none"
-                  disabled={loading}
-                >
-                  <PlusCircle className="h-6 w-6" />
-                </button>
-              </div>
-            </div>
-
-            <div className="px-4">
-              <span className="text-green-600 font-medium">VS</span>
-            </div>
-
-            <div className="text-center flex-1">
-              <p className="font-semibold text-lg text-green-800">{matchData.teamB}</p>
-              <div className="flex items-center justify-center mt-2">
-                <button
-                  onClick={() => decrement("B")}
-                  className="text-red-500 hover:text-red-700 focus:outline-none"
-                  disabled={loading}
-                >
-                  <MinusCircle className="h-6 w-6" />
-                </button>
-                <span className="mx-3 text-2xl font-bold">{matchData.scoreB}</span>
-                <button
-                  onClick={() => increment("B")}
-                  className="text-green-600 hover:text-green-800 focus:outline-none"
-                  disabled={loading}
-                >
-                  <PlusCircle className="h-6 w-6" />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <label htmlFor="status" className="block text-green-800 font-medium mb-1">
-              Match Status
-            </label>
-            <input
-              type="text"
-              id="status"
-              value={matchData.status}
-              onChange={handleStatusChange}
-              className="w-full border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
-              placeholder="e.g. live, halftime, etc."
-            />
-          </div>
-        </div>
-      )}
     </div>
   )
 }

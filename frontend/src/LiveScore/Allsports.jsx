@@ -135,7 +135,7 @@ export default function SportsManagementPage() {
                   </div>
                   <div className="p-6">
                     <UpdateScoreForm
-                      matches={liveMatches}
+                      matches={matches}
                       selectedSport={selectedSport}
                       onSportChange={handleSportChange}
                     />

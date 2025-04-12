@@ -515,27 +515,7 @@ const NewNavbar = () => {
 
             {/* Login Buttons */}
             <div className="hidden md:flex space-x-4">
-              {/* <Button
-                size="sm"
-                className="bg-green-500 hover:bg-green-600 text-white shadow-md transition-all hover:shadow-lg"
-                onClick={() => {
-                  setLoginType("student")
-                  setIsLoginOpen(true)
-                }}
-              >
-                Student
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                className="border-green-500 text-green-500 hover:bg-green-50 shadow-sm transition-all hover:shadow-md"
-                onClick={() => {
-                  setLoginType("admin")
-                  setIsLoginOpen(true)
-                }}
-              >
-                Admin
-              </Button> */}
+             
             </div>
 
             {/* Mobile Menu Button */}

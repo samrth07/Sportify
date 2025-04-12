@@ -927,7 +927,7 @@ export default function Home() {
       </section>
 
       {/* College Sports Gallery */}
-      <section className="py-16 bg-gradient-to-r from-green-800 to-green-700 text-white">
+      <section className="py-16 bg-gradient-to-r from-green-800 to-green-700 text-white" id="about">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             variants={containerVariants}

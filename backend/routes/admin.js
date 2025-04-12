@@ -220,7 +220,7 @@ adminRouter.post('/kabaddi', async(req, res) => {
         teamB: team2,
         date: date,
         startTime: startTime,
-        status: req.body.status
+        status: status
     })
 
     if(!adding) {
