@@ -5,7 +5,7 @@ import { Activity, PlusCircle, MinusCircle } from "lucide-react"
 const POLL_INTERVAL = 5000;
 
 function LiveScore({ sport, matchId }) {
-  const [match, setMatch] = useState(null);
+  const [match, setMatch] = useState({});
 
   const fetchMatch = async () => {
     const res = await axios.get(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`);
@@ -28,8 +28,8 @@ function LiveScore({ sport, matchId }) {
   const increment = (team) => {
     if (!match) return;
     const updated = {
-      teamAGoals: team === "A" ? match.match.teamAGoals + 1 : match.match.teamAGoals,
-      teamBGoals: team === "B" ? match.match.teamBGoals + 1 : match.match.teamBGoals,
+      teamAGoals: team === "A" ? match.teamAGoals + 1 : match.teamAGoals,
+      teamBGoals: team === "B" ? match.teamBGoals + 1 : match.teamBGoals,
     };
     updateScore(updated);
     alert("score updated succesfully");
@@ -38,8 +38,8 @@ function LiveScore({ sport, matchId }) {
   const decrement = (team) => {
     if (!match) return;
     const updated = {
-      teamAGoals: team === "A" ? Math.max(0, match.match.teamAGoals - 1) : match.match.teamAGoals,
-      teamBGoals: team === "B" ? Math.max(0, match.match.teamBGoals - 1) : match.match.teamBGoals,
+      teamAGoals: team === "A" ? Math.max(0, match.teamAGoals - 1) : match.teamAGoals,
+      teamBGoals: team === "B" ? Math.max(0, match.teamBGoals - 1) : match.teamBGoals,
     };
     updateScore(updated);
   };
@@ -53,7 +53,7 @@ function LiveScore({ sport, matchId }) {
 
     <div className="flex justify-between items-center mb-4">
       <div className="text-center flex-1">
-        <p className="font-semibold text-lg text-green-800">{match.match.teamA}</p>
+        <p className="font-semibold text-lg text-green-800">{match.teamA}</p>
         <div className="flex items-center justify-center mt-2">
           <button
             onClick={() => decrement("A")}
@@ -61,7 +61,7 @@ function LiveScore({ sport, matchId }) {
           >
             <MinusCircle className="h-6 w-6" />
           </button>
-          <span className="mx-3 text-2xl font-bold">{match.match.teamAGoals}</span>
+          <span className="mx-3 text-2xl font-bold">{match.teamAGoals}</span>
           <button
             onClick={() => increment("A")}
             className="text-green-600 hover:text-green-800 focus:outline-none"
@@ -70,13 +70,12 @@ function LiveScore({ sport, matchId }) {
           </button>
         </div>
       </div>
-
       <div className="px-4">
         <span className="text-green-600 font-medium">VS</span>
       </div>
 
       <div className="text-center flex-1">
-        <p className="font-semibold text-lg text-green-800">{match.match.teamB}</p>
+        <p className="font-semibold text-lg text-green-800">{match.teamB}</p>
         <div className="flex items-center justify-center mt-2">
           <button
             onClick={() => decrement("B")}
@@ -84,7 +83,7 @@ function LiveScore({ sport, matchId }) {
           >
             <MinusCircle className="h-6 w-6" />
           </button>
-          <span className="mx-3 text-2xl font-bold">{match.match.teamBGoals}</span>
+          <span className="mx-3 text-2xl font-bold">{match.teamBGoals}</span>
           <button
             onClick={() => increment("B")}
             className="text-green-600 hover:text-green-800 focus:outline-none"

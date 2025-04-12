@@ -157,7 +157,7 @@ const UpdateLive = () => {
           <button
             onClick={() => handleUpdate(match._id, match.teamAGoals, match.teamBGoals)}
             disabled={updatingId === match._id}
-            className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700"
           >
             {updatingId === match._id ? "Updating..." : "Update Score"}
           </button>

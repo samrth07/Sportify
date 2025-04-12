@@ -15,7 +15,6 @@ const CreateMatch = () => {
   const [selectedSport, setSelectedSport] = useState("basketball");
   const [status, setStatus] = useState("upcoming");
   const [matchId, setMatchId] = useState(null);
-  const [loading, setLoading] = useState("true");
 
   const handleCreateMatch = async () => {
     const body = {
@@ -28,6 +27,7 @@ const CreateMatch = () => {
 
     try {
       const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
+      console.log(res.data.matchId);
       const newMatchId = res.data.matchId;
       setMatchId(newMatchId);
       alert(res.data.message || "Match created");

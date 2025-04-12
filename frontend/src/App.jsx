@@ -24,7 +24,6 @@ function App() {
 
   return (
     <>
-        <Navbar/>
         <NewNavbar/>
        <Routes>
         
@@ -32,20 +31,15 @@ function App() {
             <Route path='/signup' element={<Signupnew/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/sportAarya' element={<Sportpage/>}/>
-            {/* <Route path='/about' element={<About/>}/> */}
             <Route path='/matches' element={<Matches/>}/> 
             <Route path='/cricket' element={<Cricket/>}/>
             
-            {/* <Route path='/samarth' element={<Samarth/>}/> */}
             <Route path='/creatematches' element={<CreateMatch/>}/>
             <Route path='/uploadscore' element={<Allsports/>}/>
 
             <Route path='/samarth' element={<Samarth/>}/>
             <Route path='/article' element={<Article/>}/>
-            <Route path='/livescore' element={<LiveScore/>}/>
-            
-            {/* sport for arrays's url */}
-            
+            <Route path='/livescore' element={<LiveScore/>}/>            
        </Routes>
      
     </>
