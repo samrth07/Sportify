@@ -6,19 +6,17 @@ import Home from './component/homepage';
 import Signup from './component/Signup';
 import Login from './component/Login';
 import Sportpage from './Sports/Sportpage';
-// import About from './component/About';
 import Matches from './Sports/Matches';
 import Cricket from './Sports/Cricket';
-// import Sports from './component/sports'; not in use 
 import NewNavbar from './component/NewNavbar';
 import Samarth from './component/Samarth';
 import CreateMatch from './Sports/createMatch';
 import Allsports from './LiveScore/Allsports';
 import Signupnew from './component/Signup UI';
-// import article from './component/article';
 import Article from './component/article';
-import LiveMatchCard from './LiveScore/LiveMatchCard';
 import LiveScore from './component/LiveComponent';
+import AboutPage from './component/AboutPage';
+
 function App() {
   
 
@@ -33,13 +31,12 @@ function App() {
             <Route path='/sportAarya' element={<Sportpage/>}/>
             <Route path='/matches' element={<Matches/>}/> 
             <Route path='/cricket' element={<Cricket/>}/>
-            
             <Route path='/creatematches' element={<CreateMatch/>}/>
             <Route path='/uploadscore' element={<Allsports/>}/>
-
             <Route path='/samarth' element={<Samarth/>}/>
             <Route path='/article' element={<Article/>}/>
-            <Route path='/livescore' element={<LiveScore/>}/>            
+            <Route path='/livescore' element={<LiveScore/>}/>  
+            <Route path='/AboutPage' element={<AboutPage/>}/>          
        </Routes>
      
     </>

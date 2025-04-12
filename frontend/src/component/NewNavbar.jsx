@@ -499,7 +499,7 @@ const NewNavbar = () => {
                 Home
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all group-hover:w-full"></span>
               </Link>
-              <Link to={'/'} className="text-green-800 font-medium hover:text-green-500 transition-colors relative group">
+              <Link to={'/AboutPage'} className="text-green-800 font-medium hover:text-green-500 transition-colors relative group">
                 About
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-500 transition-all group-hover:w-full"></span>
               </Link>

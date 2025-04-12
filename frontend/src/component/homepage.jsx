@@ -1213,7 +1213,7 @@ export default function Home() {
                     className="text-green-200 hover:text-green-300 transition-colors inline-flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    News
+                    Articles
                   </a>
                 </li>
                 <li>
