@@ -18,7 +18,7 @@ import Article from './component/article';
 import LiveScore from './component/LiveComponent';
 import FetchLivematches from './FetchliveMatches/FetchLivematches';
 import AboutPage from './component/AboutPage';
-
+// import Newhomepage from './FetchliveMatches/FetchLivematches';
 function App() {
   
 
@@ -40,9 +40,9 @@ function App() {
             <Route path='/samarth' element={<Samarth/>}/>
             <Route path='/article' element={<Article/>}/>
             <Route path='/livescore' element={<LiveScore/>}/>
-            <Route path='/fetchlivematch' element={<FetchLivematches/>}/>
+            {/* <Route path='/fetchlivematch' element={<FetchLivematches/>}/> */}
             {/* sport for arrays's url */}
-            
+            {/* <Route path='/newhomepage' element={<Newhomepage/>}/> */}
             <Route path='/livescore' element={<LiveScore/>}/>  
             <Route path='/AboutPage' element={<AboutPage/>}/>          
        </Routes>
