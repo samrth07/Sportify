@@ -51,6 +51,7 @@ export default function Navbar() {
             ))}
           </nav>
 
+
           {/* User Authentication Section */}
           <div className="flex items-center space-x-4">
             {user ? (
@@ -112,6 +113,7 @@ export default function Navbar() {
                 </Link>
               </div>
             )}
+
 
             {/* Mobile Menu Button */}
             <button

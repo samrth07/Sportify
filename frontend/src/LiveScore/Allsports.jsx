@@ -3,9 +3,6 @@
 import { useState, useEffect } from "react"
 import { Trophy, Activity, Calendar, MapPin, Clock, CheckCircle2 } from "lucide-react"
 import axios from "axios"
-import HostMatchForm from "./Hostmatch"
-import UpdateScoreForm from "./UpdateScoreform"
-import LiveMatchCard from "./LiveMatchCard"
 import CreateMatch from "../Sports/createMatch"
 import UpdateLive from "../component/updateLive"
 
@@ -73,11 +70,11 @@ export default function SportsManagementPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       <div className="container mx-auto px-4 py-12 max-w-6xl">
-        <div className="flex items-center justify-center mb-12">
-          <div className="bg-green-500 p-3 rounded-full mr-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center mb-12">
+          <div className="bg-green-500 p-3 rounded-full mr-0 sm:mr-4 mb-4 sm:mb-0">
             <Trophy className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-green-800 text-center">Sports Management</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-green-800 text-center">Sports Management</h1>
         </div>
 
         <div className="w-full">
@@ -106,38 +103,37 @@ export default function SportsManagementPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-12 lg:grid-cols-5 gap-8">
-             <div className="lg:col-span-2"> 
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div className="md:col-span-1 lg:col-span-2">
               {activeTab === "host-match" && (
                 <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
                   <div className="bg-green-500 py-4 px-6">
                     <h2 className="text-xl font-bold text-white">Host a New Match</h2>
                   </div>
                   <div className="p-6">
-                    <CreateMatch/>
+                    <CreateMatch />
                   </div>
                 </div>
               )}
 
-              {activeTab === "update-score" &&  (
+              {activeTab === "update-score" && (
                 <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
                   <div className="bg-green-500 py-4 px-6">
                     <h2 className="text-xl font-bold text-white">Update Match Score</h2>
                   </div>
                   {/* <div className="p-6">
                     <UpdateScoreForm
-                      matches={liveMatches}
+                      matches={matches}
                       selectedSport={selectedSport}
                       onSportChange={handleSportChange}
                     />
                   </div> */}
-                  <UpdateLive/>
+                  <UpdateLive />
                 </div>
-              )
-              }
+              )}
             </div>
 
-            <div className="center">
+            <div className="col-span-1 md:col-span-2 lg:col-span-3">
               <div>
                 <div className="p-0">
                   <div className="max-h-[600px] overflow-y-auto">
@@ -147,7 +143,7 @@ export default function SportsManagementPage() {
                           <div className="p-4 border-b border-green-100">
                             <h3 className="text-lg font-semibold text-green-800 mb-3 flex items-center">
                               <Activity className="h-5 w-5 mr-2 text-green-500" />
-                               Live Matches
+                              Live Matches
                             </h3>
                             <div className="space-y-3">
                               {liveMatches.map((match) => (
@@ -183,12 +179,10 @@ export default function SportsManagementPage() {
                               ))}
                             </div>
                           </div>
-                        )}                      
+                        )}
                       </>
                     ) : (
-                      <>
-
-                      </>
+                      <></>
                     )}
                   </div>
                 </div>
@@ -228,13 +222,13 @@ function MatchCard({ match }) {
           {getStatusBadge(match.status)}
         </div>
 
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex-1 text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-3">
+          <div className="flex-1 text-center mb-2 sm:mb-0">
             <p className="font-bold text-lg text-green-800">{match.teamA}</p>
             {match.scoreA !== undefined && <p className="text-xl font-bold">{match.scoreA}</p>}
           </div>
 
-          <div className="px-4">
+          <div className="px-4 my-2 sm:my-0">
             <span className="text-gray-400 font-medium">VS</span>
           </div>
 
@@ -244,7 +238,7 @@ function MatchCard({ match }) {
           </div>
         </div>
 
-        <div className="flex items-center text-sm text-gray-500 justify-center space-x-4">
+        <div className="flex flex-wrap items-center text-sm text-gray-500 justify-center gap-2">
           {match.venue && (
             <div className="flex items-center">
               <MapPin className="h-4 w-4 mr-1" />

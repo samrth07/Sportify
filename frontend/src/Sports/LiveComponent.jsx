@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const POLL_INTERVAL = 5000;
+const POLL_INTERVAL = 2000;
 
 function LiveScore({matchId}) {
   const [match, setMatch] = useState(null);

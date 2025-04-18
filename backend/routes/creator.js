@@ -123,7 +123,7 @@ creatorRouter.get("/football", async (req, res) => {
 
   const id = req.query.matchId;
   let match = await FootballModel.findOne({
-    _id: id
+    status : "live"
   })
 
   if(match) {
@@ -142,7 +142,7 @@ creatorRouter.get("/basketball", async (req, res) => {
 
   const id = req.query.matchId;
   let match = await BasketballModel.findOne({
-    _id: id
+     status : "live"
   })
 
   if(match) {
@@ -161,7 +161,7 @@ creatorRouter.get("/badminton", async (req, res) => {
 
   const id = req.query.matchId;
   let match = await BadmintonModel.findOne({
-    _id: id
+     status : "live"
   })
 
   if(match) {
@@ -180,7 +180,7 @@ creatorRouter.get("/kabaddi", async (req, res) => {
 
   const id = req.query.matchId;
   let match = await KabaddiModel.findOne({
-    _id: id
+     status : "live"
   })
 
   if(match) {
@@ -199,7 +199,7 @@ creatorRouter.get("/carrom", async (req, res) => {
 
   const id = req.query.matchId;
   let match = await CarromModel.findOne({
-    _id: id
+     status : "live"
   })
 
   if(match) {
