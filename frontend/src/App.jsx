@@ -17,8 +17,9 @@ import Signupnew from './component/Signup UI';
 import Article from './component/article';
 import LiveScore from './component/LiveComponent';
 import FetchLivematches from './FetchliveMatches/FetchLivematches';
-import AboutPage from './component/AboutPage';
+import AboutSection from './component/AboutPage';
 // import Newhomepage from './FetchliveMatches/FetchLivematches';
+import LoginNew from './component/login UI'
 function App() {
   
 
@@ -31,7 +32,7 @@ function App() {
             <Route path='/' element={<Home/>}/>
             <Route path='/signup' element={<Signupnew/>}/>
 
-            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/login' element={<LoginNew/>}/>
             <Route path='/sports' element={<Sportpage/>}/>
 
             <Route path='/matches' element={<Matches/>}/> 

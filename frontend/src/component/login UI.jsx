@@ -1,16 +1,21 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { ArrowRight, BirdIcon as Cricket, Eye, EyeOff, Mail, Lock } from "lucide-react"
+import { Link } from "react-router-dom"
 
-export default function Login() {
+import { ArrowRight, BirdIcon as Cricket, Eye, EyeOff, Mail, Lock } from "lucide-react"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+
+export default function LoginNew() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   })
+
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -20,16 +25,21 @@ export default function Login() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
     setIsLoading(true)
 
     // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
+    const res = await axios.post("http://localhost:3000/admin/signin" , formData);
+
+    if(res){
       alert("Login successful!")
-      // Redirect to dashboard or home page
-    }, 1500)
+      navigate('/uploadscore')
+    }
+    else{
+      alert("Send the correcct credential !!!")
+    }
+    
   }
 
   const handleGoogleSignIn = () => {

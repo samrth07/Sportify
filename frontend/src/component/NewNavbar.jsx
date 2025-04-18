@@ -35,10 +35,11 @@ export default function Navbar() {
           <nav className="hidden md:flex items-center space-x-8">
             {[
               { path: "/", label: "Home" },
+              { path: "/AboutPage", label: "About" },
               { path: "/sports", label: "Sports" },
              
-              { path: "/article", label: "Articles" },
-              { path: "/AboutPage", label: "About" }
+              { path: "/article", label: "Articles" }
+             
             ].map((item) => (
               <Link
                 key={item.path}

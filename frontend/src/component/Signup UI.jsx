@@ -2,15 +2,16 @@
 
 import { useState } from "react"
 import { Link } from "react-router-dom";
-
+import axios from "axios"
 import { ArrowRight, BirdIcon as Cricket, Eye, EyeOff, Mail, Lock, User, Calendar } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 export default function Signupnew() {
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
-    firstName: "",
+    adminName: "",
     lastName: "",
     email: "",
     password: "",
@@ -18,29 +19,36 @@ export default function Signupnew() {
     favoriteTeam: "",
   })
 
+
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleNextStep = (e) => {
     e.preventDefault()
     setStep(2)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
     setIsLoading(true)
 
     // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
-      alert("Account created successfully!")
-      // Redirect to login or dashboard
-    }, 1500)
+
+    try{
+      const res = await axios.post("http://localhost:3000/admin/signup" , formData);
+
+        if(res){
+          alert("Signup successfuly Done !!!");
+          navigate('/')
+        }
+    }
+    catch(e){
+        alert("Somthing went wrong !!!")
+    }
+    
   }
 
   return (
@@ -173,7 +181,7 @@ export default function Signupnew() {
                     </div>
                     <input
                       id="firstName"
-                      name="firstName"
+                      name="adminName"
                       type="text"
                       autoComplete="given-name"
                       required

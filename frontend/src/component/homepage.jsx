@@ -813,40 +813,6 @@ export default function Home() {
                 </div>
               </motion.div>
 
-
-
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* College Sports Gallery */}
-      <section className="py-16 bg-gradient-to-r from-green-800 to-green-700 text-white" id="about">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="inline-block mb-4 bg-white/10 px-4 py-1.5 rounded-full backdrop-blur-sm"
-            >
-              <span className="text-green-100 font-medium">Our Gallery</span>
-            </motion.div>
-            <motion.h2 variants={itemVariants} className="text-3xl font-bold mb-4">
-              Our College Sports in Action
-            </motion.h2>
-            <motion.p variants={itemVariants} className="max-w-2xl mx-auto text-green-200">
-              Capturing the excitement, teamwork, and joy of sports at Zeal College
-            </motion.p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {galleryImages.map((image, index) => (
-
               <motion.div
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
