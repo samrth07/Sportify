@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import {Routes, Route } from "react-router-dom";
 import './App.css'
-import Navbar from './component/Navbar';
+//import Navbar from './component/Navbar';
 import Home from './component/homepage';
-import Signup from './component/Signup';
-import Login from './component/Login';
+//import Signup from './component/Signup';
+//import Login from './component/Login';
 import Sportpage from './Sports/Sportpage';
 import About from './component/About';
 import Matches from './Sports/Matches';
@@ -30,9 +30,10 @@ function App() {
         
             <Route path='/' element={<Home/>}/>
             <Route path='/signup' element={<Signupnew/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/sportAarya' element={<Sportpage/>}/>
-            <Route path='/about' element={<About/>}/>
+
+            <Route path='/login' element={<LoginPage/>}/>
+            <Route path='/sports' element={<Sportpage/>}/>
+
             <Route path='/matches' element={<Matches/>}/> 
             <Route path='/cricket' element={<Cricket/>}/>
             <Route path='/creatematches' element={<CreateMatch/>}/>
@@ -44,7 +45,7 @@ function App() {
             {/* sport for arrays's url */}
             {/* <Route path='/newhomepage' element={<Newhomepage/>}/> */}
             <Route path='/livescore' element={<LiveScore/>}/>  
-            <Route path='/AboutPage' element={<AboutPage/>}/>          
+            <Route path='/AboutPage' element={<AboutSection />} />      
        </Routes>
      
     </>
