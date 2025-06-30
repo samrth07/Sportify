@@ -28,7 +28,6 @@ Sportify is a fully functional web platform designed to track live sports scores
 
 ### 🔄 Clone the Repository
 
-```bash
 git clone https://github.com/shrutiiiyet/sportify.git
 cd sportify
 
