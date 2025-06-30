@@ -34,11 +34,11 @@ Sportify is a fully functional web platform designed to track live sports scores
 ---
 
 ### 📦 Install Dependencies
-- Backend:
+#### Backend:
 - cd backend
 - npm install
 
-### Frontend:
+#### Frontend:
 - cd ../frontend
 - npm install
 
