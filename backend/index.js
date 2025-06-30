@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const  adminRouter = require("./routes/admin");
+const adminRouter = require("./routes/admin");
 const sportRouter = require("./routes/matches");
 const creatorRouter = require('./routes/creator');
 const userRouter = require('./routes/community')
