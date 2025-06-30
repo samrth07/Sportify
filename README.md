@@ -28,22 +28,30 @@ Sportify is a fully functional web platform designed to track live sports scores
 
 ### 🔄 Clone the Repository
 
-git clone https://github.com/shrutiiiyet/sportify.git
-cd sportify
+- git clone https://github.com/shrutiiiyet/sportify.git
+- cd sportify
 
-📦 Install Dependencies
-Backend:
-cd backend
-npm install
+---
 
-Frontend:
-cd ../frontend
-npm install
+### 📦 Install Dependencies
+- Backend:
+- cd backend
+- npm install
 
-🏆 Hackathon Recognition
-🥈 Runner-up at SPECTRA 2K25 Hackathon
-Built in under 48 hours from scratch
-Appreciated for real-time usability and clean match admin workflow
+### Frontend:
+- cd ../frontend
+- npm install
+
+---
+
+### 🔐Lock Environment Variables
+
+## 🏆 Hackathon Recognition
+- 🥈 Runner-up at SPECTRA 2K25 Hackathon
+- Built in under 48 hours from scratch
+- Appreciated for real-time usability and clean match admin workflow
+
+---
 
 ### 🏠 Homepage
 ![Homepage](screenshots/Homepage.png)
@@ -53,7 +61,7 @@ Appreciated for real-time usability and clean match admin workflow
 
 ![Score Board](screenshots/ScoreVisual.png)
 
-🔐Lock Environment Variables
+---
 
 📜 License
 This project is released under the MIT License.
