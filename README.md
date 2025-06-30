@@ -42,9 +42,9 @@ Sportify is a fully functional web platform designed to track live sports scores
 - cd ../frontend
 - npm install
 
----
-
 ### 🔐Lock Environment Variables
+
+---
 
 ## 🏆 Hackathon Recognition
 - 🥈 Runner-up at SPECTRA 2K25 Hackathon
@@ -54,12 +54,13 @@ Sportify is a fully functional web platform designed to track live sports scores
 ---
 
 ### 🏠 Homepage
-![Homepage](screenshots/Homepage.png)
+![Homepage](assets/Homepage.png)
 
 ### ⚙️ Admin Panel
-![Admin Panel](screenshots/HostMatch.png)
+![Admin Panel](assets/HostMatch.png)
 
-![Score Board](screenshots/ScoreVisual.png)
+### 📸 Score Updates
+![Score Board](assets/ScoreVisual.png)
 
 ---
 
