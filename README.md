@@ -64,10 +64,12 @@ Sportify is a fully functional web platform designed to track live sports scores
 
 ---
 
-##📜 License
+## 📜License
 This project is released under the MIT License.
 
-##Team Members
+---
+
+## Team Members
 - Shruti Jadhav
 - Samarth Lad
 - Aarya Godbole
