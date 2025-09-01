@@ -1,6 +1,13 @@
 {
   "dependencies": {
-    "framer-motion": "^12.6.5",
-    "swiper": "^11.2.6"
+    "concurrently": "^9.2.1"
+  },
+  "scripts": {
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm install && (cd backend && npm install) && (cd frontend && npm install)",
+    "install:backend": "cd backend && npm install",
+    "dev": "concurrently \"npm run backend-dev\" \"npm run frontend-dev\"",
+    "backend-dev": "cd backend && npm run dev",
+    "frontend-dev": "cd frontend && npm run dev"
   }
 }
