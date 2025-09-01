@@ -10,7 +10,6 @@ const UpdateLive = () => {
 
   const sportsOptions = ["basketball", "football", "kabaddi", "cricket", "carrom", "badminton"];
 
-  // 🟢 Fetch function placed outside useEffect so it's reusable
   const fetchMatches = async (sport) => {
     setLoading(true);
     try {
@@ -24,7 +23,7 @@ const UpdateLive = () => {
     }
   };
 
-  // 🟢 Fetch matches on initial render and whenever sport changes
+  //  Fetch matches on initial render and whenever sport changes
   useEffect(() => {
     fetchMatches(selectedSport);
   }, [selectedSport]);
@@ -58,8 +57,8 @@ const UpdateLive = () => {
   return (
     <div className="p-6 space-y-6">
       {/* Sport Selection Dropdown */}
-      <div>
-        <label htmlFor="sport" className="block text-green-800 font-medium mb-1">
+      <div className="max-w-150 mb-10">
+        <label htmlFor="sport" className="block text-green-800 font-medium mb-1 w-full">
           Sport
         </label>
         <select
@@ -78,8 +77,9 @@ const UpdateLive = () => {
       </div>
 
       {/* Live Match Cards */}
+      <div className="grid grid-cols-2">
       {matches.map((match) => (
-        <div key={match._id} className="p-4 bg-green-50 border border-green-200 rounded-lg space-y-4">
+        <div key={match._id} className="p-4 bg-green-50 border border-green-200 rounded-lg space-y-4 m-4">
           <div className="flex items-center justify-center text-red-500 font-medium">
             <Activity className="h-5 w-5 mr-2" />
             LIVE
@@ -163,6 +163,7 @@ const UpdateLive = () => {
           </button>
         </div>
       ))}
+    </div>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react"
-import { Calendar, Clock, MapPin, Trophy, Users, Star, TrendingUp, BarChart2 } from "lucide-react"
+import { Calendar, Clock, Trophy, Users, Star, TrendingUp, BarChart2 } from "lucide-react"
 
-const Samarth = () => {
+const Scoreboard = () => {
   const [activeTab, setActiveTab] = useState("live")
   const [showScoreForm, setShowScoreForm] = useState(false)
 
@@ -104,7 +104,6 @@ const Samarth = () => {
     team1Overs: "",
     team2Overs: "",
     status: "",
-    venue: "",
     matchDate: "",
     matchTime: "",
   })
@@ -432,10 +431,6 @@ const Samarth = () => {
                       <div className="match-info-item">
                         <Clock className="match-info-icon" size={16} />
                         <span>{match.time}</span>
-                      </div>
-                      <div className="match-info-item">
-                        <MapPin className="match-info-icon" size={16} />
-                        <span>{match.venue}</span>
                       </div>
                     </div>
                   </div>
@@ -1169,4 +1164,4 @@ const Samarth = () => {
   )
 }
 
-export default Samarth
+export default Scoreboard

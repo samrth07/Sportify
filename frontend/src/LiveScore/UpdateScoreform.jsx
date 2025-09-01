@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { Activity, AlertCircle, PlusCircle, MinusCircle } from "lucide-react"
+import { AlertCircle, } from "lucide-react"
 
 const UpdateScoreForm = ({ matches, selectedSport, onSportChange }) => {
   const [selectedMatch, setSelectedMatch] = useState(null)

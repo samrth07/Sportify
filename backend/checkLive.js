@@ -85,10 +85,3 @@ const checkMatchesToGoLiveKabaddi = async () => {
       console.log(`Match "${match.teamA} vs ${match.teamB}" started.`);
     }
 };
-
-// setInterval(checkMatchesToGoLiveCricket, 10 * 1000);
-// setInterval(checkMatchesToGoLiveFootball, 10 * 1000);
-// setInterval(checkMatchesToGoLiveBasketball, 10 * 1000);
-// setInterval(checkMatchesToGoLiveKabaddi, 10 * 1000);
-// setInterval(checkMatchesToGoLiveBadminton, 10 * 1000);
-//setInterval(checkMatchesToGoLiveCarrom, 10 * 1000);

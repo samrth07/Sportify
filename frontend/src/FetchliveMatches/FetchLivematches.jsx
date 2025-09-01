@@ -23,9 +23,7 @@ const FetchLivematches = () => {
  async function fetchMatch(selectedSport) {
     
     const res = await axios.get(`http://localhost:3000/creator/${selectedSport}`)
-    console.log(res);
     setLiveMatches(res.data.match)
-    console.log(livematch)
  }
 
 
