@@ -19,7 +19,6 @@ Sportify is a fully functional web platform designed to track live sports scores
 - **Frontend:** React.js, Tailwind CSS
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB with Mongoose
-- **Real-time Communication:** WebSockets (Socket.io)
 - **Other:** UUID for match identifiers, environment config via dotenv
 
 ---
