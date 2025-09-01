@@ -30,8 +30,3 @@ Thumbs.db
 .vscode/
 *.sublime-project
 *.sublime-workspace
-
-# Output
-dist/
-build/
-coverage/
