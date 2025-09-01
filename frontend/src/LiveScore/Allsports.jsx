@@ -22,10 +22,8 @@ export default function SportsManagementPage() {
     try {
       // Fetch all matches for the selected sport
       const response = await axios.get(`http://localhost:3000/creator/cricket`)
-      console.log(response)
       // Ensure matches is an array
       setMatches(Array.isArray(response.data.match) ? response.data.match : [])
-      console.log(matches)
       // Fetch live matches for the selected sport
       const liveResponse = await axios.get(`/creator/live/${selectedSport}`)
       // Ensure liveMatches is an array
@@ -36,30 +34,6 @@ export default function SportsManagementPage() {
       setMatches([])
       setLiveMatches([])
     }
-  }
-
-  const handleCreateMatch = async (matchData) => {
-    try {
-      const response = await axios.post(`http://localhost:3000/admin/${matchData.sport}`, {
-        teamA: matchData.teamA,
-        teamB: matchData.teamB,
-        status: matchData.status,
-        date: matchData.date,
-        startTime: matchData.startTime,
-      })
-
-      if (response.data.matchId) {
-        setCreatedMatchId(response.data.matchId)
-        // Refresh matches list
-        fetchMatches()
-      }
-    } catch (error) {
-      console.error("Failed to create match:", error)
-    }
-  }
-
-  const handleSportChange = (sport) => {
-    setSelectedSport(sport)
   }
 
   // Add a safety check before filtering
@@ -103,41 +77,26 @@ export default function SportsManagementPage() {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <div className=" justify-center items-center">
             <div className="md:col-span-1 lg:col-span-2">
-              {activeTab === "host-match" && (
-                <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
+              {activeTab === "host-match" ?
+                <div className= "max-w-200 gap-8 border border-green-100 rounded-lg shadow-lg overflow-hidden w-full">
                   <div className="bg-green-500 py-4 px-6">
                     <h2 className="text-xl font-bold text-white">Host a New Match</h2>
                   </div>
                   <div className="p-6">
                     <CreateMatch />
                   </div>
-                </div>
-              )}
-
-              {activeTab === "update-score" && (
-                <div className="border border-green-100 rounded-lg shadow-lg overflow-hidden">
-                  <div className="bg-green-500 py-4 px-6">
-                    <h2 className="text-xl font-bold text-white">Update Match Score</h2>
-                  </div>
-                  {/* <div className="p-6">
-                    <UpdateScoreForm
-                      matches={matches}
-                      selectedSport={selectedSport}
-                      onSportChange={handleSportChange}
-                    />
-                  </div> */}
-                  <UpdateLive />
-                </div>
-              )}
+                </div> :
+              <UpdateLive/>
+              }
             </div>
 
             <div className="col-span-1 md:col-span-2 lg:col-span-3">
               <div>
                 <div className="p-0">
                   <div className="max-h-[600px] overflow-y-auto">
-                    {activeTab === "host-match" ? (
+                    {activeTab === "host-match" && (
                       <>
                         {liveMatches.length > 0 && (
                           <div className="p-4 border-b border-green-100">
@@ -181,8 +140,6 @@ export default function SportsManagementPage() {
                           </div>
                         )}
                       </>
-                    ) : (
-                      <></>
                     )}
                   </div>
                 </div>

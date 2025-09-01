@@ -3,7 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import LiveScore from "../component/LiveComponent";
-import { Calendar, Clock, Users } from "lucide-react"
+import { useNavigate } from "react-router-dom";
+import { Calendar, Clock, Users } from "lucide-react";
 
 const sportsOptions = ["basketball", "football", "kabaddi", "cricket", "carrom", "badminton"];
 
@@ -15,6 +16,7 @@ const CreateMatch = () => {
   const [selectedSport, setSelectedSport] = useState("basketball");
   const [status, setStatus] = useState("upcoming");
   const [matchId, setMatchId] = useState(null);
+  const navigate = useNavigate();
 
   const handleCreateMatch = async () => {
     const body = {
@@ -27,11 +29,12 @@ const CreateMatch = () => {
 
     try {
       const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
-      console.log(res.data.matchId);
       const newMatchId = res.data.matchId;
       setMatchId(newMatchId);
       alert(res.data.message || "Match created");
-    } catch (error) {
+      navigate('/uploadscore')
+    } 
+    catch (error) {
       console.error(error);
       alert("Error creating match");
     }
@@ -163,10 +166,6 @@ const CreateMatch = () => {
       {selectedSport !=='cricket' && status === "live" && matchId && (
         <LiveScore sport={selectedSport} matchId={matchId} />
       )}
-
-      {/* {selectedSport === 'cricket' && status === 'live' && matchId && (
-        <CricketLive matchId={matchId}/>
-      )} */}
       </div>
   );
 };

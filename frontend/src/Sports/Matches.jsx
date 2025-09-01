@@ -1,6 +1,3 @@
-
-
-
 "use client"
 import { useState, useEffect } from "react"
 import { Calendar, Clock, MapPin, Trophy, Users, Star, TrendingUp, BarChart2 } from "lucide-react"
@@ -112,15 +109,6 @@ const Matches = () => {
   const handleCreateFormChange = (e) => {
     const { name, value } = e.target
     setCreateForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  // Handle update form change
-  const handleUpdateFormChange = (e) => {
-    const { name, value } = e.target
-    setUpdateForm((prev) => ({
       ...prev,
       [name]: value,
     }))
@@ -325,8 +313,6 @@ const Matches = () => {
           </form>
         </div>
       )}
-
-      {/* Update Score Form */}
       
 
       {/* Match Content Based on Active Tab */}
@@ -399,10 +385,6 @@ const Matches = () => {
                             <span>
                               {new Date(match.startTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                             </span>
-                          </div>
-                          <div className="match-info-item">
-                            <MapPin className="match-info-icon" size={16} />
-                            <span>{match.venue}</span>
                           </div>
                         </div>
                       </div>
