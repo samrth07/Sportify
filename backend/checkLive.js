@@ -1,4 +1,4 @@
-const {CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel} = require("../db");
+import {CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel}  from "../db.js";
 
 // Runs every minute
 const checkMatchesToGoLiveCricket = async () => {

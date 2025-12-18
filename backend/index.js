@@ -1,14 +1,16 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const adminRouter = require("./routes/admin");
-const sportRouter = require("./routes/matches");
-const creatorRouter = require('./routes/creator');
-const userRouter = require('./routes/community')
+import express from "express";
+import mongoose from "mongoose";
+import adminRouter from "./routes/admin.js"
+import sportRouter from "./routes/matches.js";
+import creatorRouter from './routes/creator.js';
+import userRouter from './routes/community.js'
 
 
 
-const cors = require("cors");
-require("dotenv").config();
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
 app.use(cors());

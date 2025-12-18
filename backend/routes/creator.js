@@ -1,106 +1,13 @@
-const { Router } = require("express");
-const { adminAuth } = require("../middleware");
-const creatorRouter =  Router();
-const { CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel } = require("../db");
-const mongoose = require('mongoose');
+import { Router } from "express";
+import { adminAuth } from "../middleware.js";
+import { CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel } from "../db.js";
+import mongoose from 'mongoose';
 
 // creatorRouter.use(adminAuth);
+const creatorRouter =  Router();
 
-creatorRouter.put('/badminton', async (req, res) => {
-    const matchId = req.query.matchId;
-    const teamAGoals = req.body.teamAGoals;
-    const teamBGoals = req.body.teamBGoals;
+creatorRouter.get("/cricket",   async (req, res) => {
 
-    if (!mongoose.Types.ObjectId.isValid(matchId))
-         return res.status(400).json({ error: 'Invalid ID' });
-  
-    const updatedMatch = await BadmintonModel.findByIdAndUpdate(matchId, {
-      teamAGoals, teamBGoals
-    }, { new: true });
-  
-    res.json(updatedMatch);
-});
-
-creatorRouter.put('/cricket', async (req, res) => {
-    const matchId = req.query.matchId;
-    const teamARuns = req.body.teamAGoals;
-    const teamAWickets = req.body.teamAWickets;
-    const teamBRuns = req.body.teamBGoals;
-    const teamBWickets = req.body.teamBWickets;
-
-    if (!mongoose.Types.ObjectId.isValid(matchId))
-         return res.status(400).json({ error: 'Invalid ID' });
-  
-    const updatedMatch = await CricketModel.findByIdAndUpdate(matchId, {
-      teamARuns, teamBRuns, teamAWickets, teamBWickets
-    }, { new: true });
-  
-    res.json(updatedMatch);
-});
-
-creatorRouter.put('/football', async (req, res) => {
-    const matchId = req.query.matchId;
-    const teamAGoals = req.body.teamAGoals;
-    const teamBGoals = req.body.teamBGoals;
-
-    if (!mongoose.Types.ObjectId.isValid(matchId))
-         return res.status(400).json({ error: 'Invalid ID' });
-  
-    const updatedMatch = await FootballModel.findByIdAndUpdate(matchId, {
-      teamAGoals, teamBGoals
-    }, { new: true });
-  
-    res.json(updatedMatch);
-});
-
-creatorRouter.put('/carrom', async (req, res) => {
-    const matchId = req.query.matchId;
-    const teamAGoals = req.body.teamAGoals;
-    const teamBGoals = req.body.teamBGoals;
-
-    if (!mongoose.Types.ObjectId.isValid(matchId))
-         return res.status(400).json({ error: 'Invalid ID' });
-  
-    const updatedMatch = await CarromModel.findByIdAndUpdate(matchId, {
-      teamAGoals, teamBGoals
-    }, { new: true });
-  
-    res.json(updatedMatch);
-});
-
-creatorRouter.put('/kabaddi', async (req, res) => {
-    const matchId = req.query.matchId;
-    const teamAGoals = req.body.teamAGoals;
-    const teamBGoals = req.body.teamBGoals;
-
-    if (!mongoose.Types.ObjectId.isValid(matchId))
-         return res.status(400).json({ error: 'Invalid ID' });
-  
-    const updatedMatch = await KabaddiModel.findByIdAndUpdate(matchId, {
-      teamAGoals, teamBGoals
-    }, { new: true });
-  
-    res.json(updatedMatch);
-});
-
-creatorRouter.put('/basketball', async (req, res) => {
-    const matchId = req.query.matchId;
-    const teamAGoals = req.body.teamAGoals;
-    const teamBGoals = req.body.teamBGoals;
-
-    if (!mongoose.Types.ObjectId.isValid(matchId))
-         return res.status(400).json({ error: 'Invalid ID' });
-  
-    const updatedMatch = await BasketballModel.findByIdAndUpdate(matchId, {
-      teamAGoals, teamBGoals
-    }, { new: true });
-  
-    res.json(updatedMatch);
-});
-
-creatorRouter.get("/cricket", async (req, res) => {
-
-  const id = req.query.matchId;
   let match = await CricketModel.find({
     status : "live"
   },{
@@ -121,7 +28,7 @@ creatorRouter.get("/cricket", async (req, res) => {
 
 creatorRouter.get("/football", async (req, res) => {
 
-  const id = req.query.matchId;
+ 
   let match = await FootballModel.findOne({
     status : "live"
   })
@@ -213,6 +120,100 @@ creatorRouter.get("/carrom", async (req, res) => {
     })
   }
 })
+
+
+creatorRouter.put('/badminton/:matchId', adminAuth ,  async (req, res) => {
+    const matchId = req.query.matchId;
+    const teamAPoint = req.body.teamAPoint;
+    const teamBPoint = req.body.teamBPoint;
+
+    if (!mongoose.Types.ObjectId.isValid(matchId))
+         return res.status(400).json({ error: 'Invalid ID' });
+  
+    const updatedMatch = await BadmintonModel.findByIdAndUpdate(matchId, {
+      teamAPoint, teamBPoint
+    }, { new: true });
+  
+    res.json(updatedMatch);
+});
+
+creatorRouter.put('/cricket/:matchId', adminAuth , async (req, res) => {
+    const matchId = req.params.matchId;
+    const teamARuns = req.body.teamARuns;
+    const teamAWickets = req.body.teamAWickets;
+    const teamBRuns = req.body.teamBRuns;
+    const teamBWickets = req.body.teamBWickets;
+
+    if (!mongoose.Types.ObjectId.isValid(matchId))
+         return res.status(400).json({ error: 'Invalid ID' });
+  
+    const updatedMatch = await CricketModel.findByIdAndUpdate(matchId, {
+      teamARuns, teamBRuns, teamAWickets, teamBWickets
+    }, { new: true });
+  
+    res.json(updatedMatch);
+});
+
+creatorRouter.put('/football/:matchId', adminAuth , async (req, res) => {
+    const matchId = req.params.matchId;
+    const teamAGoals = req.body.teamAGoals;
+    const teamBGoals = req.body.teamBGoals;
+
+    if (!mongoose.Types.ObjectId.isValid(matchId))
+         return res.status(400).json({ error: 'Invalid ID' });
+  
+    const updatedMatch = await FootballModel.findByIdAndUpdate(matchId, {
+      teamAGoals, teamBGoals
+    }, { new: true });
+  
+    res.json(updatedMatch);
+});
+
+creatorRouter.put('/carrom/:matchId', adminAuth , async (req, res) => {
+    const matchId = req.query.matchId;
+    const player1Point = req.body.player1Point;
+    const player2Point = req.body.player2Point;
+
+    if (!mongoose.Types.ObjectId.isValid(matchId))
+         return res.status(400).json({ error: 'Invalid ID' });
+  
+    const updatedMatch = await CarromModel.findByIdAndUpdate(matchId, {
+      player1Point, player2Point
+    }, { new: true });
+  
+    res.json(updatedMatch);
+});
+
+creatorRouter.put('/kabaddi/:matchId', adminAuth , async (req, res) => {
+    const matchId = req.query.matchId;
+    const teamAPoint = req.body.teamAPoint;
+    const teamBPoint = req.body.teamBPoint;
+
+    if (!mongoose.Types.ObjectId.isValid(matchId))
+         return res.status(400).json({ error: 'Invalid ID' });
+  
+    const updatedMatch = await KabaddiModel.findByIdAndUpdate(matchId, {
+      teamAPoint, teamBPoint
+    }, { new: true });
+  
+    res.json(updatedMatch);
+});
+
+creatorRouter.put('/basketball/:matchId', adminAuth ,  async (req, res) => {
+    const matchId = req.query.matchId;
+    const teamAPoint = req.body.teamAPoint;
+    const teamBPoint = req.body.teamBPoint;
+
+    if (!mongoose.Types.ObjectId.isValid(matchId))
+         return res.status(400).json({ error: 'Invalid ID' });
+  
+    const updatedMatch = await BasketballModel.findByIdAndUpdate(matchId, {
+      teamAPoint, teamBPoint
+    }, { new: true });
+  
+    res.json(updatedMatch);
+});
+
 
 creatorRouter.get("/filter/cricket", async (req, res) => {
 
@@ -322,4 +323,4 @@ creatorRouter.get("/filter/basketball", async (req, res) => {
   }
 })
 
-module.exports = creatorRouter
+export default creatorRouter

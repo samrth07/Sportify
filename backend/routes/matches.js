@@ -1,13 +1,13 @@
-const express = require("express");
+import express from "express";
 const sportRouter = express.Router();
 
-const { CricketModel, 
+import { CricketModel, 
     FootballModel, 
     BasketballModel, 
     CarromModel, 
     KabaddiModel, 
     BadmintonModel
-    } = require("../db");
+    } from "../db.js";
 
   sportRouter.get('/cricket', async (req, res) => {
     try {
@@ -88,5 +88,5 @@ const { CricketModel,
       }
     });
     
-  module.exports = sportRouter;
+export default sportRouter
 

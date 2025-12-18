@@ -1,10 +1,12 @@
-const { Router } = require("express");
-const { adminAuth } = require("../middleware");
+import { Router } from "express";
+
+import {AdminModel, CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel} from "../db.js";
+import { z }  from "zod";
+import jwt  from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { adminAuth } from "../middleware.js";
+
 const adminRouter =  Router();
-const {AdminModel, CricketModel, FootballModel, BasketballModel, CarromModel, KabaddiModel, BadmintonModel} = require("../db");
-const { z } = require("zod");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 
 adminRouter.post("/signup", async(req, res) => {
     
@@ -32,7 +34,7 @@ adminRouter.post("/signup", async(req, res) => {
         adminName: adminName,
         password: hashedPassword,
     })
-    console.log(resp)
+
     res.json ({
         message: "Signup succeded"
     })
@@ -64,12 +66,12 @@ adminRouter.post("/signin", async(req, res) => {
     }
 });
 
-// adminRouter.use(adminAuth);
+adminRouter.use(adminAuth);
 
 adminRouter.post('/cricket', async (req, res) => {
 
-    const team1 = req.body.teamA;
-    const team2 = req.body.teamB;
+    const team1 = req.body.team1;
+    const team2 = req.body.team2;
     const date = req.body.date;
     const startTime = req.body.startTime;
     const status = req.body.status;
@@ -235,4 +237,4 @@ adminRouter.post('/kabaddi', async(req, res) => {
     })
 });
   
-module.exports = adminRouter;
+export default adminRouter;

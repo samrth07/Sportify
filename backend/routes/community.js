@@ -1,8 +1,10 @@
-const { Router } = require("express");
+import { Router } from  "express";
+import { z } from  "zod";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { CommunityModel } from '../db.js'
+
 const userRouter = Router();
-const { z } = require("zod");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
 
 userRouter.post("/signup", async(req, res) => {
     
@@ -62,4 +64,4 @@ userRouter.post("/signin", async(req, res) => {
     }
 });
 
-module.exports = userRouter;
+export default userRouter

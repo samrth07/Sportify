@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 let adminModel = new Schema ({
@@ -42,8 +42,8 @@ let kabaddiModel = new Schema ({
     teamA: String,
     teamB: String,
     winningTeam: {type: String, default:""},
-    teamAGoals: {type: Number, default:0},
-    teamBGoals: {type: Number, default:0},
+    teamAPoint: {type: Number, default:0},
+    teamBPoint: {type: Number, default:0},
     date: Date,
     startTime: Date,
     status: { type: String, enum: ['upcoming', 'live', 'completed'], default: 'upcoming' },
@@ -53,8 +53,8 @@ let badmintonModel = new Schema ({
     teamA: String,
     teamB: String,
     winningTeam: {type: String, default:""},
-    teamAGoals: {type: Number, default:0},
-    teamBGoals: {type: Number, default:0},
+    teamAPoint: {type: Number, default:0},
+    teamBPoint: {type: Number, default:0},
     date: Date,
     startTime: Date,
     status: { type: String, enum: ['upcoming', 'live', 'completed'], default: 'upcoming' },
@@ -64,8 +64,8 @@ let carromModel = new Schema ({
     teamA: String,
     teamB: String,
     winningTeam: {type: String, default:""},
-    teamAGoals: {type: Number, default:0},
-    teamBGoals: {type: Number, default:0},
+    player1Point: {type: Number, default:0},
+    player2Point: {type: Number, default:0},
     date: Date,
     startTime: Date,
     status: { type: String, enum: ['upcoming', 'live', 'completed'], default: 'upcoming' },
@@ -75,8 +75,8 @@ let basketballModel = new Schema ({
     teamA: String,
     teamB: String,
     winningTeam: {type: String, default:""},
-    teamAGoals: {type: Number, default:0},
-    teamBGoals: {type: Number, default:0},
+    teamAPoint: {type: Number, default:0},
+    teamBPoint: {type: Number, default:0},
     date: Date,
     startTime: Date,
     status: { type: String, enum: ['upcoming', 'live', 'completed'], default: 'upcoming' },
@@ -91,13 +91,13 @@ let CarromModel = mongoose.model("carrom", carromModel);
 let BadmintonModel = mongoose.model("badminton", badmintonModel);
 let BasketballModel = mongoose.model("basketball", basketballModel);
 
-module.exports = {
-    CommunityModel: CommunityModel,
-    AdminModel: AdminModel,
-    CricketModel: CricketModel,
-    FootballModel: FootballModel,
-    KabaddiModel: KabaddiModel,
-    CarromModel: CarromModel,
-    BadmintonModel: BadmintonModel,
-    BasketballModel: BasketballModel
+export {
+    CommunityModel,
+    AdminModel,
+    CricketModel,
+    FootballModel,
+    KabaddiModel,
+    CarromModel,
+    BadmintonModel,
+    BasketballModel
 };
