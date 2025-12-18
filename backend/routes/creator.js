@@ -123,7 +123,7 @@ creatorRouter.get("/carrom", async (req, res) => {
 
 
 creatorRouter.put('/badminton/:matchId', adminAuth ,  async (req, res) => {
-    const matchId = req.query.matchId;
+    const matchId = req.params.matchId;
     const teamAPoint = req.body.teamAPoint;
     const teamBPoint = req.body.teamBPoint;
 
@@ -170,7 +170,7 @@ creatorRouter.put('/football/:matchId', adminAuth , async (req, res) => {
 });
 
 creatorRouter.put('/carrom/:matchId', adminAuth , async (req, res) => {
-    const matchId = req.query.matchId;
+    const matchId = req.params.matchId;
     const player1Point = req.body.player1Point;
     const player2Point = req.body.player2Point;
 
@@ -185,7 +185,7 @@ creatorRouter.put('/carrom/:matchId', adminAuth , async (req, res) => {
 });
 
 creatorRouter.put('/kabaddi/:matchId', adminAuth , async (req, res) => {
-    const matchId = req.query.matchId;
+    const matchId = req.params.matchId;
     const teamAPoint = req.body.teamAPoint;
     const teamBPoint = req.body.teamBPoint;
 
@@ -200,7 +200,7 @@ creatorRouter.put('/kabaddi/:matchId', adminAuth , async (req, res) => {
 });
 
 creatorRouter.put('/basketball/:matchId', adminAuth ,  async (req, res) => {
-    const matchId = req.query.matchId;
+    const matchId = req.params.matchId;
     const teamAPoint = req.body.teamAPoint;
     const teamBPoint = req.body.teamBPoint;
 
