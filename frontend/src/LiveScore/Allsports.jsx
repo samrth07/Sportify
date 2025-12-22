@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Trophy, Activity, Calendar, MapPin, Clock, CheckCircle2 } from "lucide-react"
 import axios from "axios"
-import CreateMatch from "../Sports/createMatch"
+import CreateMatch from "../Sports/CreateMatch"
 import UpdateLive from "../component/updateLive"
 
 export default function SportsManagementPage() {
