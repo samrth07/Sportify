@@ -66,9 +66,9 @@ const Matches = () => {
     try {
       setLoading(true)
       // Use a relative URL instead of hardcoded localhost
-      const response = await axios.get(`http://localhost:3000/matches/${sport}`)
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/matches/${sport}`)
 
-      console.log(response);
+      console.log("Match fetchhes" + response);
 
       // Organize matches by status
       const liveMatches = response.data.filter((match) => match.status === "live")
@@ -119,7 +119,7 @@ const Matches = () => {
     e.preventDefault()
 
     try {
-      await axios.post("/api/matches", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/matches`, {
         ...createForm,
         sport: "Cricket",
       })
@@ -148,7 +148,7 @@ const Matches = () => {
     e.preventDefault()
 
     try {
-      await axios.put(`/api/matches/${updateForm.matchId}`, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/matches/${updateForm.matchId}`, {
         teamAGoals: updateForm.teamAGoals,
         teamBGoals: updateForm.teamBGoals,
         status: updateForm.status,
@@ -222,7 +222,7 @@ const Matches = () => {
             Completed
           </button>
           <div className="button-container">
-            <Link to={'/login'}><button
+            <Link to={'/uploadscore'}><button
               className="create-score-btn"
             >
               Create Match
@@ -333,12 +333,12 @@ const Matches = () => {
                       <div className="match-teams">
                         <div className="team">
                           <span className="team-name">{match.teamA}</span>
-                          <span className="team-score">{match.teamAGoals || 0}</span>
+                          <span className="team-score">{match.teamAPoint || 0}</span>
                         </div>
                         <div className="vs">VS</div>
                         <div className="team">
                           <span className="team-name">{match.teamB}</span>
-                          <span className="team-score">{match.teamBGoals || 0}</span>
+                          <span className="team-score">{match.teamBPoint || 0}</span>
                         </div>
                       </div>
                       <div className="match-status">
@@ -346,7 +346,7 @@ const Matches = () => {
                           ? `${match.teamA} leads by ${match.teamAGoals - match.teamBGoals} runs`
                           : match.teamBGoals > match.teamAGoals
                             ? `${match.teamB} leads by ${match.teamBGoals - match.teamAGoals} runs`
-                            : "Match is tied"}
+                            : "Result is pending"}
                       </div>
                       <button className="view-details-btn">View Details</button>
                     </div>
@@ -408,12 +408,12 @@ const Matches = () => {
                       <div className="match-teams">
                         <div className="team">
                           <span className="team-name">{match.teamA}</span>
-                          <span className="team-score">{match.teamAGoals || 0}</span>
+                          <span className="team-score">{match.teamAPoimts || 0}</span>
                         </div>
                         <div className="vs">VS</div>
                         <div className="team">
                           <span className="team-name">{match.teamB}</span>
-                          <span className="team-score">{match.teamBGoals || 0}</span>
+                          <span className="team-score">{match.teamBPoimts || 0}</span>
                         </div>
                       </div>
                       <div className="match-result">

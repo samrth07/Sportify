@@ -7,7 +7,7 @@ function LiveScore({ matchId }) {
   const [match, setMatch] = useState(null);
 
   const fetchMatch = async () => {
-    const res = await axios.get(`http://localhost:3000/creator/live/cricket?matchId=${matchId}`);
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/creator/live/cricket/${matchId}`);
     console.log(res);
     setMatch(res.data);
   };
@@ -19,7 +19,7 @@ function LiveScore({ matchId }) {
   }, [matchId]);
 
   const updateScore = async (newData) => {
-    await axios.put(`http://localhost:3000/creator/live/crciket?matchId=${matchId}`, newData);
+    await axios.put(`${import.meta.env.VITE_API_URL}/creator/live/crciket/${matchId}`, newData);
     fetchMatch();
   };
 

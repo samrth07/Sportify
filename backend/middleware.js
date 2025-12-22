@@ -17,7 +17,7 @@ export const adminAuth = async (req, res, next) => {
         }
     }
     else {
-        res.status(404).json ({
+        res.status(500).json ({
             message: "Error reading token"
         })
     }

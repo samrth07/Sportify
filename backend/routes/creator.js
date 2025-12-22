@@ -156,14 +156,14 @@ creatorRouter.put('/cricket/:matchId', adminAuth , async (req, res) => {
 
 creatorRouter.put('/football/:matchId', adminAuth , async (req, res) => {
     const matchId = req.params.matchId;
-    const teamAGoals = req.body.teamAGoals;
-    const teamBGoals = req.body.teamBGoals;
+    const teamAPoint = req.body.teamAPoint;
+    const teamBPoint = req.body.teamBPoint;
 
     if (!mongoose.Types.ObjectId.isValid(matchId))
          return res.status(400).json({ error: 'Invalid ID' });
   
     const updatedMatch = await FootballModel.findByIdAndUpdate(matchId, {
-      teamAGoals, teamBGoals
+      teamAPoint, teamBPoint
     }, { new: true });
   
     res.json(updatedMatch);
@@ -171,20 +171,20 @@ creatorRouter.put('/football/:matchId', adminAuth , async (req, res) => {
 
 creatorRouter.put('/carrom/:matchId', adminAuth , async (req, res) => {
     const matchId = req.params.matchId;
-    const player1Point = req.body.player1Point;
-    const player2Point = req.body.player2Point;
+    const teamAPoint = req.body.teamAPoint;
+    const teamBPoint = req.body.teamBPoint;
 
     if (!mongoose.Types.ObjectId.isValid(matchId))
          return res.status(400).json({ error: 'Invalid ID' });
   
     const updatedMatch = await CarromModel.findByIdAndUpdate(matchId, {
-      player1Point, player2Point
+      teamBPoint, teamBPoint
     }, { new: true });
   
     res.json(updatedMatch);
 });
 
-creatorRouter.put('/kabaddi/:matchId', adminAuth , async (req, res) => {
+creatorRouter.put('/kabaddi/:matchId' , adminAuth  ,  async (req, res) => {
     const matchId = req.params.matchId;
     const teamAPoint = req.body.teamAPoint;
     const teamBPoint = req.body.teamBPoint;

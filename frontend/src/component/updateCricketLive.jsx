@@ -9,7 +9,7 @@ const UpdateCricketLive = () => {
   useEffect(() => {
     const fetchMatches = async ( {sport} ) => {
       try {
-        const res = await axios.get(`http://localhost:3000/creator/live/filter/cricket`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/creator/live/filter/cricket`);
         setMatches(res.data.matches);
       } catch (err) {
         console.error("Error fetching live matches", err);
@@ -34,7 +34,7 @@ const UpdateCricketLive = () => {
     setUpdatingId(matchId);
     console.log(matchId);
     try {
-      await axios.put(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/creator/live/${sport}/${matchId}`, {
         teamARuns,
         teamBRuns,
         teamAWickets,

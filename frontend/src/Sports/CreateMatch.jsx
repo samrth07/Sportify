@@ -17,6 +17,7 @@ const CreateMatch = () => {
   const [status, setStatus] = useState("upcoming");
   const [matchId, setMatchId] = useState(null);
   const navigate = useNavigate();
+  const token  = JSON.parse(localStorage.getItem('user'));
 
   const handleCreateMatch = async () => {
     const body = {
@@ -28,7 +29,12 @@ const CreateMatch = () => {
     };
 
     try {
-      const res = await axios.post(`http://localhost:3000/admin/${selectedSport}`, body);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/admin/${selectedSport}`, body , {
+        headers : {
+          token,
+          "Content-Type": "application/json",
+        }
+      });
       const newMatchId = res.data.matchId;
       setMatchId(newMatchId);
       alert(res.data.message || "Match created");

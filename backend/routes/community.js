@@ -1,67 +1,71 @@
-import { Router } from  "express";
-import { z } from  "zod";
+import { Router } from "express";
+import { z } from "zod";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { CommunityModel } from '../db.js'
+import { CommunityModel } from "../db.js";
 
 const userRouter = Router();
 
-userRouter.post("/signup", async(req, res) => {
-    
-    const requiredBody = z.object ({
-         email: z.string().email(),
-         userName: z.string().min(3).max(100),
-         password: z.string().min(7).max(50),
-    })
+userRouter.post("/signup", async (req, res) => {
+  const requiredBody = z.object({
+    email: z.string().email(),
+    userName: z.string().min(3).max(100),
+    password: z.string().min(7).max(50),
+  });
 
-    let response = requiredBody.safeParse(req.body);
+  let response = requiredBody.safeParse(req.body);
 
-    if(!response.success) {
-        res.status(401).json ({
-            message: "Password must be more than 7 characters",
-        })
-        return;
-    }
-    const email = req.body.email;
-    const userName = req.body.userName;
-    const password = req.body.password;
-    const hashedPassword = await bcrypt.hash(password, 5);
+  if (!response.success) {
+    res.status(401).json({
+      message: "Password must be more than 7 characters",
+    });
+    return;
+  }
+  const email = req.body.email;
+  const userName = req.body.userName;
+  const password = req.body.password;
+  const hashedPassword = await bcrypt.hash(password, 5);
 
-    await CommunityModel.create ({
-        email: email,
-        userName: userName,
-        password: hashedPassword,
-    })
+  await CommunityModel.create({
+    email: email,
+    userName: userName,
+    password: hashedPassword,
+  });
 
-    res.json ({
-        message: "Signup succeded"
-    })
+  res.json({
+    message: "Signup succeded",
+  });
 });
 
-userRouter.post("/signin", async(req, res) => {
-
+userRouter.post("/signin", async (req, res) => {
+  try {
     const email = req.body.email;
     const pass = req.body.password;
 
-    const user = await CommunityModel.findOne ({
-        email: email
-    })
+    const user = await CommunityModel.findOne({
+      email: email,
+    });
     const validation = await bcrypt.compare(pass, user.password);
 
-    if(!validation) {
-        res.status(404).json ({
-            message: "Invalid password"
-        })
-        return;
+    if (!validation) {
+      res.status(404).json({
+        message: "Invalid password",
+      });
+      return;
+    } else {
+      const token = jwt.sign(
+        {
+          id: user._id.toString(),
+        },
+        process.env.JWT_USER_SECRET
+      );
+      res.json({
+        token: token
+      });
     }
-    else {
-        const token = jwt.sign({
-            id: user._id.toString()
-        }, process.env.JWT_USER_SECRET);
-        res.json({
-            token: token
-        })
-    }
+  } catch (error) {
+        res.status(500).json({msg : "Something went wrong "})
+  }
 });
 
-export default userRouter
+export default userRouter;

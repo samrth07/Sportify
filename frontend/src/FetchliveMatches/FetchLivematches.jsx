@@ -22,7 +22,7 @@ const FetchLivematches = () => {
     
  async function fetchMatch(selectedSport) {
     
-    const res = await axios.get(`http://localhost:3000/creator/${selectedSport}`)
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/creator/${selectedSport}`)
     setLiveMatches(res.data.match)
  }
 

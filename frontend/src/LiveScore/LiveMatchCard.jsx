@@ -13,7 +13,7 @@ const LiveMatchCard = ({ matchId, selectedSport }) => {
   const fetchMatch = async () => {
     try {
       console.log(matchId);
-      const res = await axios.get(`http://localhost:3000/creator/live/basketball?${matchId}`)
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/creator/live/basketball?${matchId}`)
       console.log(res);
       setMatch(res.data)
     } catch (error) {
@@ -30,7 +30,7 @@ const LiveMatchCard = ({ matchId, selectedSport }) => {
   const updateScore = async (newData) => {
     setLoading(true)
     try {
-      const res = await axios.put(`http://localhost:3000/creator/live/basketball/?${matchId}`, newData);
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/creator/live/basketball/?${matchId}`, newData);
       console.log(res);
       fetchMatch() // Optimistic update
     } catch (error) {

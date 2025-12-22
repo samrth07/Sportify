@@ -70,15 +70,15 @@ adminRouter.use(adminAuth);
 
 adminRouter.post('/cricket', async (req, res) => {
 
-    const team1 = req.body.team1;
-    const team2 = req.body.team2;
+    const teamA = req.body.teamA;
+    const teamB = req.body.teamB;
     const date = req.body.date;
     const startTime = req.body.startTime;
     const status = req.body.status;
 
     const trying = await CricketModel.create({
-        teamA: team1,
-        teamB: team2,
+        teamA,
+        teamB,
         date: date,
         startTime: startTime,
         status: status

@@ -20,7 +20,7 @@ const UpdateScoreForm = ({ matches, selectedSport, onSportChange }) => {
 
   const fetchMatchDetails = async (matchId) => {
     try {
-      const res = await axios.get(`http://localhost:3000/creator/${sport}`)
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/creator/${sport}`)
       setMatchData(res.data)
       console.log("from the form data : "+res)
     } catch (error) {

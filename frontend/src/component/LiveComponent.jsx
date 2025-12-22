@@ -8,7 +8,7 @@ function LiveScore({ sport, matchId }) {
   const [match, setMatch] = useState({});
 
   const fetchMatch = async () => {
-    const res = await axios.get(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`);
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/creator/live/${sport}/${matchId}`);
     console.log(res);
     setMatch(res.data);
   };
@@ -20,7 +20,7 @@ function LiveScore({ sport, matchId }) {
   }, [matchId]);
 
   const updateScore = async (newData) => {
-    const res = await axios.put(`http://localhost:3000/creator/live/${sport}?matchId=${matchId}`, newData);
+    const res = await axios.put(`${import.meta.env.VITE_API_URL}/creator/live/${sport}/${matchId}`, newData);
     console.log(res);
     fetchMatch();
   };
@@ -101,7 +101,7 @@ function LiveScore({ sport, matchId }) {
       <input
         type="text"
         id="status"
-        value={match.match.status}
+        value={match.status}
         className="w-full border border-green-200 rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
         placeholder="e.g. live, halftime, etc."
       />

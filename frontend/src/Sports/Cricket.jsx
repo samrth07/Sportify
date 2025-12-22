@@ -62,7 +62,7 @@ const Cricket = () => {
     try {
       setLoading(true)
       // Use a relative URL instead of hardcoded localhost
-      const response = await axios.get("http://localhost:3000/matches/cricket")
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/matches/cricket`)
 
       console.log(response);
 

@@ -1,21 +1,21 @@
-"use client"
-
 import { useState } from "react"
-import { Link } from "react-router-dom"
-
-import { ArrowRight, BirdIcon as Cricket, Eye, EyeOff, Mail, Lock } from "lucide-react"
+import { ArrowRight, Eye, EyeOff, Mail, Lock, UserCog } from "lucide-react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../context/AuthContext";
+
 
 export default function LoginNew() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    role: "user", // Default role
   })
-
-  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -29,17 +29,17 @@ export default function LoginNew() {
     e.preventDefault()
     setIsLoading(true)
 
-    // Simulate API call
-    const res = await axios.post("http://localhost:3000/admin/signin" , formData);
-
-    if(res){
-      alert("Login successful!")
-      navigate('/uploadscore')
+    try {
+      // Use the role from formData in the URL
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/${formData.role}/signin`, formData );
+        alert("Login successful!")
+        login(response.data.token); // Uncomment when AuthContext is available
+        navigate('/') // Uncomment when react-router is available
+    } catch (error) {
+      alert("An error occurred during login!")
+    } finally {
+      setIsLoading(false)
     }
-    else{
-      alert("Send the correcct credential !!!")
-    }
-    
   }
 
   const handleGoogleSignIn = () => {
@@ -49,7 +49,6 @@ export default function LoginNew() {
     setTimeout(() => {
       setIsLoading(false)
       alert("Google sign-in successful!")
-      // Redirect to dashboard or home page
     }, 1500)
   }
 
@@ -59,14 +58,43 @@ export default function LoginNew() {
       <div className="w-full md:w-1/2 flex flex-col justify-center items-center p-8 md:p-16">
         <div className="w-full max-w-md">
           <div className="flex items-center mb-8">
-            <Cricket className="h-10 w-10 text-emerald-500 mr-3" />
+            <svg className="h-10 w-10 text-emerald-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
             <h1 className="text-3xl font-bold text-gray-800">Cricket Portal</h1>
           </div>
 
           <h2 className="text-2xl font-bold text-gray-800 mb-2">Welcome back</h2>
           <p className="text-gray-600 mb-8">Sign in to access your account</p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <label htmlFor="role" className="text-sm font-medium text-gray-700">
+                Select Role
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <UserCog className="h-5 w-5 text-gray-400" />
+                </div>
+                <select
+                  id="role"
+                  name="role"
+                  required
+                  value={formData.role}
+                  onChange={handleChange}
+                  className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent appearance-none cursor-pointer"
+                >
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+                <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                  <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium text-gray-700">
                 Email address
@@ -132,29 +160,29 @@ export default function LoginNew() {
                   Remember me
                 </label>
               </div>
-              <a href="#" className="text-sm font-medium text-emerald-600 hover:text-emerald-500">
+              <button className="text-sm font-medium text-emerald-600 hover:text-emerald-500">
                 Forgot password?
-              </a>
+              </button>
             </div>
 
             <div>
               <button
-                type="submit"
+                onClick={handleSubmit}
                 disabled={isLoading}
                 className={`w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-emerald-500 hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 ${
                   isLoading ? "opacity-70 cursor-not-allowed" : ""
                 }`}
               >
                 {isLoading ? (
-                  <div className="loader"></div>
+                  <div className="border-3 border-white/30 border-t-white rounded-full w-6 h-6 animate-spin"></div>
                 ) : (
                   <>
-                    Sign in <ArrowRight className="ml-2 h-5 w-5 animate-bounce-x" />
+                    Sign in <ArrowRight className="ml-2 h-5 w-5" />
                   </>
                 )}
               </button>
             </div>
-          </form>
+          </div>
 
           <div className="mt-6">
             <div className="relative">
@@ -198,9 +226,9 @@ export default function LoginNew() {
 
           <p className="mt-8 text-center text-sm text-gray-600">
             Don't have an account?{" "}
-            <Link href="/signup" className="font-medium text-emerald-600 hover:text-emerald-500">
+            <button className="font-medium text-emerald-600 hover:text-emerald-500">
               Sign up now
-            </Link>
+            </button>
           </p>
         </div>
       </div>
@@ -208,10 +236,15 @@ export default function LoginNew() {
       {/* Right side - Image */}
       <div className="hidden md:block md:w-1/2 bg-emerald-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-emerald-600/40"></div>
-        <div className="absolute inset-0 cricket-pattern opacity-5"></div>
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%2310b981' fillOpacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-          <div className="cricket-ball-animation">
-            <div className="cricket-ball"></div>
+          <div className="animate-bounce">
+            <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-red-600 to-red-800 shadow-lg relative">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-0.5 bg-white/80 rotate-30"></div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-0.5 bg-white/80 -rotate-30"></div>
+            </div>
           </div>
           <h2 className="text-4xl font-bold text-emerald-800 mt-8">Welcome to Cricket Portal</h2>
           <p className="mt-4 text-lg text-emerald-700 max-w-md mx-auto">
@@ -219,81 +252,6 @@ export default function LoginNew() {
           </p>
         </div>
       </div>
-
-      {/* CSS */}
-      <style jsx>{`
-        .animate-bounce-x {
-          animation: bounce-x 1s infinite;
-        }
-
-        @keyframes bounce-x {
-          0%, 100% {
-            transform: translateX(0);
-          }
-          50% {
-            transform: translateX(3px);
-          }
-        }
-
-        .loader {
-          border: 3px solid rgba(255, 255, 255, 0.3);
-          border-radius: 50%;
-          border-top: 3px solid white;
-          width: 24px;
-          height: 24px;
-          animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-
-        .cricket-pattern {
-          background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%2310b981' fillOpacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .cricket-ball {
-          width: 80px;
-          height: 80px;
-          background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
-          border-radius: 50%;
-          position: relative;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .cricket-ball:before, .cricket-ball:after {
-          content: '';
-          position: absolute;
-          background: white;
-          height: 2px;
-          width: 80%;
-          top: 50%;
-          left: 10%;
-          border-radius: 2px;
-        }
-
-        .cricket-ball:before {
-          transform: rotate(30deg);
-        }
-
-        .cricket-ball:after {
-          transform: rotate(-30deg);
-        }
-
-        .cricket-ball-animation {
-          animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-      `}</style>
     </div>
   )
 }

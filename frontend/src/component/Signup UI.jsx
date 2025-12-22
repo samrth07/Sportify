@@ -11,7 +11,7 @@ export default function Signupnew() {
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState({
-    adminName: "",
+    userName: "",
     lastName: "",
     email: "",
     password: "",
@@ -38,14 +38,16 @@ export default function Signupnew() {
     // Simulate API call
 
     try{
-      const res = await axios.post("http://localhost:3000/admin/signup" , formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/signup` , formData);
 
         if(res){
           alert("Signup successfuly Done !!!");
+          setIsLoading(false)
           navigate('/')
         }
     }
     catch(e){
+      setIsLoading(false)
         alert("Somthing went wrong !!!")
     }
     
@@ -181,7 +183,7 @@ export default function Signupnew() {
                     </div>
                     <input
                       id="firstName"
-                      name="adminName"
+                      name="userName"
                       type="text"
                       autoComplete="given-name"
                       required

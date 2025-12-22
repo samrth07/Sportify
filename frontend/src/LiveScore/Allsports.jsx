@@ -21,7 +21,7 @@ export default function SportsManagementPage() {
   const fetchMatches = async () => {
     try {
       // Fetch all matches for the selected sport
-      const response = await axios.get(`http://localhost:3000/creator/cricket`)
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/creator/cricket`)
       // Ensure matches is an array
       setMatches(Array.isArray(response.data.match) ? response.data.match : [])
       // Fetch live matches for the selected sport
